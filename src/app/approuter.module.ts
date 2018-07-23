@@ -1,37 +1,35 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LandingpageComponent} from './landingpage/landingpage.component';
 import {LoginpageComponent} from './loginpage/loginpage.component';
 import {UnknownpageComponent} from './unknownpage/unknownpage.component';
-import {BasecoverComponent} from './basecover/basecover.component';
-import {DashboardComponent} from './dashboard/dashboard.component';
-import {UserslistComponent} from './userslist/userslist.component';
 import {ManageuserComponent} from './manageuser/manageuser.component';
 import {AuthGuardService} from '../services/authguard';
-import {ContactComponent} from './contact/contact.component';
-import {CvcoverComponent} from './cvcover/cvcover.component';
-import {AboutComponent} from './about/about.component';
-import {SkillsComponent} from './skills/skills.component';
+import {LandpageComponent} from './landpage/landpage.component';
+import {ProgressComponent} from './progress/progress.component';
+import {RecoveryComponent} from './recovery/recovery.component';
+import {HomepageComponent} from './homepage/homepage.component';
+import {AdminsideComponent} from './adminside/adminside.component';
+
 
 
 const appRoutes: Routes = [
+  { path: 'land', component: LandpageComponent },
   { path: '', redirectTo: 'land', pathMatch: 'full' },
-  { path: 'login', component: LoginpageComponent },
+  { path: 'login', component: LoginpageComponent,
+      children: [
+        { path: 'recovery', component: RecoveryComponent },
+      ],
+    },
   { path: 'unknown', component: UnknownpageComponent },
 
-  { path: '', component: CvcoverComponent,
+  { path: 'home/:id', component: HomepageComponent,
     children: [
-      { path: 'land', component: LandingpageComponent },
-      { path: 'contact', component: ContactComponent },
-      { path: 'about', component: AboutComponent },
-      { path: 'skills', component: SkillsComponent },
+      { path: '', component: ProgressComponent },
     ],
   },
 
-  { path: 'admin', component: BasecoverComponent,
+  { path: 'admin', component: AdminsideComponent,
     children: [
-      {path: 'dashboard', component: DashboardComponent },
-      {path: 'userlist', component: UserslistComponent },
       {path: 'manageuser/:id', component: ManageuserComponent },
     ],
     canActivate: [ AuthGuardService ]
