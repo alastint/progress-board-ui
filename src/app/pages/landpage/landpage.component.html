@@ -1,7 +1,7 @@
 <app-registration-dialog
   *ngIf="showRegist"
   [options]="{confirm: true, reject: true, isOpen: true}"
-  (doConfirm)="registFunc($event)"
+    (doConfirm)="registFunc($event)"
   (doReject)="reject()"
 ></app-registration-dialog>
 <div class="landpage-container">

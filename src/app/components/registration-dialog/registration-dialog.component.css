@@ -15,10 +15,10 @@
 
 }
 .register-container {
-  background-color: #b5b5b5;
+  background-color: rgba(138, 138, 138, .7);
   border-radius: 6px;
   border: none;
-  color: darkslategrey;
+  color: mintcream;
   display: block;
   margin: 0;
   padding: 25px;

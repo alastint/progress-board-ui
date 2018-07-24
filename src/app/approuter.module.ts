@@ -1,14 +1,14 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LoginpageComponent} from './loginpage/loginpage.component';
-import {UnknownpageComponent} from './unknownpage/unknownpage.component';
-import {ManageuserComponent} from './manageuser/manageuser.component';
+import {LoginpageComponent} from './pages/loginpage/loginpage.component';
+import {UnknownpageComponent} from './pages/unknownpage/unknownpage.component';
+import {ManageuserComponent} from './pages/manageuser/manageuser.component';
 import {AuthGuardService} from '../services/authguard';
-import {LandpageComponent} from './landpage/landpage.component';
-import {ProgressComponent} from './progress/progress.component';
-import {RecoveryComponent} from './recovery/recovery.component';
-import {HomepageComponent} from './homepage/homepage.component';
-import {AdminsideComponent} from './adminside/adminside.component';
+import {LandpageComponent} from './pages/landpage/landpage.component';
+import {ProgressComponent} from './pages/progress/progress.component';
+import {RecoveryComponent} from './pages/recovery/recovery.component';
+import {HomepageComponent} from './pages/homepage/homepage.component';
+import {AdminsideComponent} from './pages/adminside/adminside.component';
 
 
 
