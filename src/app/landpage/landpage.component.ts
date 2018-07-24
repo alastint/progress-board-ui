@@ -6,10 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landpage.component.css']
 })
 export class LandpageComponent implements OnInit {
+  public showRegist = false;
 
   constructor() { }
 
-  ngOnInit() {
+  public ngOnInit() {
   }
 
+  public registFunc() {
+    console.log('confirm clicked');
+    this.showRegist = false;
+  }
+  public reject() {
+    console.log('reject clicked');
+    this.showRegist = false;
+  }
 }

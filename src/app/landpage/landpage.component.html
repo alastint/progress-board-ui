@@ -1,0 +1,24 @@
+<app-registration-dialog
+  *ngIf="showRegist"
+  [options]="{confirm: true, reject: true, isOpen: true}"
+  (doConfirm)="registFunc($event)"
+  (doReject)="reject()"
+></app-registration-dialog>
+<div class="landpage-container">
+  <div class="text-block-land">
+    <h1>Study Site</h1>
+    <p>This is site there students can find mentors and speak with other shudents</p>
+  </div>
+  <div class="container-land-column">
+    <img src="https://static.nfl.com/static/content/public/static/wildcat/assets/img/logos/teams/DEN.svg">
+    <h3>Sign in</h3>
+    <div class="login">
+      <p>Email</p>
+      <input type="text" placeholder="Email">
+      <p>Password</p>
+      <input type="text" placeholder="Password">
+      <button type="submit" id="login-btn">Log In</button>
+      <button type="button" id="regist-btn" (click)="showRegist = true">Register</button>
+    </div>
+  </div>
+</div>

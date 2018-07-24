@@ -18,10 +18,14 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { LandpageComponent } from './landpage/landpage.component';
 import { ProgressComponent } from './progress/progress.component';
 import { AdminsideComponent } from './adminside/adminside.component';
+import { ConfirmDialogComponent } from './components/';
+import { RegistrationDialogComponent } from './components';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ConfirmDialogComponent,
+    RegistrationDialogComponent,
     LoginpageComponent,
     UnknownpageComponent,
     ManageuserComponent,
