@@ -2,7 +2,7 @@
   *ngIf="showRegist"
   [options]="{confirm: true, reject: true, isOpen: true}"
     (doConfirm)="registFunc($event)"
-  (doReject)="reject()"
+    (doReject)="reject()"
 ></app-registration-dialog>
 <div class="landpage-container">
   <div class="text-block-land">
@@ -14,10 +14,10 @@
     <h3>Sign in</h3>
     <div class="login">
       <p>Email</p>
-      <input type="text" placeholder="Email">
+      <input type="email" class="lInput" [(ngModel)]="user.email"  placeholder="Email" name="email">
       <p>Password</p>
-      <input type="text" placeholder="Password">
-      <button type="submit" id="login-btn">Log In</button>
+      <input type="password" class="lInput" [(ngModel)]="user.password" placeholder="Password" name="password">
+      <button type="submit" id="login-btn" (click)="auth(user)">Log In</button>
       <button type="button" id="regist-btn" (click)="showRegist = true">Register</button>
     </div>
   </div>

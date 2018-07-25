@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from '../../../services/authservice';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -9,7 +11,10 @@ export class HomepageComponent implements OnInit {
   public chat: any = { message: '' };
   public chatMessages: any[] = [];
 
-  constructor() { }
+  constructor(
+    public authservice: AuthService,
+    public router: Router
+  ) { }
 
   public ngOnInit() {
   }
@@ -26,5 +31,10 @@ export class HomepageComponent implements OnInit {
     };
     this.chatMessages.push(message);
     this.chat.message = '';
+  }
+  quit() {
+    this.authservice.logOutFunk();
+    console.log('Log out sucsess');
+    this.router.navigate([ '', 'land']);
   }
 }

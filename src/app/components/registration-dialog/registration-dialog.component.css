@@ -41,9 +41,17 @@
 }
 .register-message ul{
   padding: 0 10px;
+  margin: 0 0 5px;
+}
+.allert-mess{
+  text-align: center;
+  margin: 0 0 3px;
 }
 .register-message ul li{
   list-style: none;
+}
+.register-message ul li h3{
+  margin-bottom: 0;
 }
 .register-message ul li input {
   border-radius: 6px;

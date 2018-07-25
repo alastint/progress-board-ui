@@ -5,22 +5,26 @@
     <!--Left Column-->
     <ul>
       <li><h3>First Name</h3>
-        <input type="text" name="firstName" [(ngModel)]="user.firstName" (keyup)="onChange()">
+        <input type="text" name="firstName" [(ngModel)]="user.firstName">
       </li>
 
       <li>
         <h3>Email</h3>
-        <input type="email" name="email" [(ngModel)]="user.email" (keyup)="onChange()">
+        <input type="email" name="email" [(ngModel)]="user.email">
       </li>
 
       <li>
         <h3>Country</h3>
-        <input type="text" name="lastName" [(ngModel)]="user.country" (keyup)="onChange()">
+        <input type="text" name="lastName" [(ngModel)]="user.country">
       </li>
 
       <li>
         <h3>Phone number</h3>
-        <input type="text" name="lastName" [(ngModel)]="user.phoneNumber1" (keyup)="onChange()">
+        <input type="text" name="lastName" [(ngModel)]="user.phoneNumber1">
+      </li>
+      <li>
+        <h3>Password</h3>
+        <input type="password" name="password" [(ngModel)]="user.password">
       </li>
     </ul>
     <!--End Left Column-->
@@ -29,35 +33,31 @@
     <ul>
       <li>
         <h3>Last Name</h3>
-        <input type="text" name="lastName" [(ngModel)]="user.lastName" (keyup)="onChange()">
+        <input type="text" name="lastName" [(ngModel)]="user.lastName">
       </li>
 
       <li>
         <h3>Company</h3>
-        <input type="text" name="companyName" [(ngModel)]="user.companyName" (keyup)="onChange()">
+        <input type="text" name="companyName" [(ngModel)]="user.companyName">
       </li>
       <li>
         <h3>Gender</h3>
-        <input type="text" name="gender" [(ngModel)]="user.gender" (keyup)="onChange()">
+        <input type="text" name="gender" [(ngModel)]="user.gender">
       </li>
       <li>
         <h3>Reserve phone number</h3>
-        <input type="text" name="phoneNumber2" [(ngModel)]="user.phoneNumber2" (keyup)="onChange()">
+        <input type="text" name="phoneNumber2" [(ngModel)]="user.phoneNumber2">
       </li>
-      <li *ngIf="options.isNew">
-        <h3>Password</h3>
-        <input type="password" name="password" [(ngModel)]="user.password" (keyup)="onChange()">
-      </li>
-      <li *ngIf="options.isNew">
+      <li>
         <h3>Confirm Password</h3>
-        <input type="password" name="passwordConfirm" [(ngModel)]="options.passwordConfirm" (keyup)="onChange()">
-        <div *ngIf="user.password && options.passwordConfirm && (user.password !== options.passwordConfirm)">Password and confirm password don't match!</div>
+        <input type="password" name="passwordConfirm" [(ngModel)]="options.passwordConfirm">
       </li>
     </ul>
     <!--End of Right Column-->
   </div>
+  <div class="allert-mess" *ngIf="user.password && options.passwordConfirm && (user.password !== options.passwordConfirm)">Password and confirm password don't match!</div>
   <div class="register-actions">
     <button type="button" name="cancel" (click)="do('reject')" *ngIf="options.reject">Cancel</button>
-    <button type="button" name="register" (click)="do('confirm')" *ngIf="options.confirm">Register</button>
+    <button [disabled]="!(user.password && options.passwordConfirm && !(user.password !== options.passwordConfirm)) || !user.email" id="saveNpush" (click)="trySave(user) || do('confirm')">Register</button>
   </div>
 </div>
