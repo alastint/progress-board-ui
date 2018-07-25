@@ -1,0 +1,9 @@
+<div class="dialog-overlay" (click)="do('reject')" [ngClass]="{'dialog-overlay-active':isOpen}"></div>
+<div class="dialog-container" [ngClass]="{'dialog-container-active':isOpen}">
+  <h4>{{options.title || 'Confirm'}}</h4>
+  <div class="dialog-message">{{options.message || 'Are you sure?'}}</div>
+  <div class="dialog-actions">
+    <button type="button" name="cancel" (click)="do('reject')" *ngIf="options.reject">Cancel</button>
+    <button type="button" name="cancel" (click)="do('confirm')" *ngIf="options.confirm">Ok</button>
+  </div>
+</div>

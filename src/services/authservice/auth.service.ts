@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 import {ApiService} from '../api';
 import {Observable} from 'rxjs';
 import { map } from 'rxjs/operators';
+import {Router} from '@angular/router';
 
 @Injectable()
 
@@ -11,6 +12,7 @@ export class AuthService {
   public user: IAuthData = {email: '', password: ''};
   constructor(
     private api: ApiService,
+    private router: Router
   ) {}
   // Authenticate function
   public authenticate(data: IAuthData): Observable <any> {
@@ -21,15 +23,12 @@ export class AuthService {
         return resp;
       }));
   }
-              // Checking for login User
-  public userloggedin() {
-    if (localStorage.getItem('currentUser')) {
-      this.logged = true;
-      this.user = JSON.parse(localStorage.getItem('currentUser'));
-    }
-  }
               // log out func, delete user from storage
   public logOutFunk() {
     localStorage.removeItem('currentUser');
+    if (!localStorage.getItem('currentUser')) {
+      console.log('Log out sucsess');
+      this.router.navigate([ '', 'land']);
+    }
   }
 }
