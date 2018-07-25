@@ -6,6 +6,7 @@
       <li><a href="/">Home</a></li>
       <li><a href="/">Progress</a></li>
       <li><a href="/">Tasks</a></li>
+      <li><a href="/">Mentors Side</a></li>
       <li><a href="/">Admin Side</a></li> <!--if user admin-->
     </ul>
     <ul class="right-header-ul">
@@ -28,76 +29,13 @@
            <th class="private-th">PM</th>
          </tr>
          </thead>
-          <tr>
-            <td class="poss-th">1</td>
-            <td class="user-th">User</td>
-            <td class="score-th">713</td>
-            <td class="rank-th">Menthor</td>
+          <tr *ngFor=" let student of studentsScore">
+            <td class="poss-th">{{ student.position }}</td>
+            <td class="user-th">{{ student.email }}</td>
+            <td class="score-th">{{ student.score }}</td>
+            <td class="rank-th">{{ student.rank }}</td>
             <td class="private-th"><button>write</button></td>
           </tr>
-         <tr>
-           <td class="poss-th">1</td>
-           <td class="user-th">User</td>
-           <td class="score-th">713</td>
-           <td class="rank-th">Menthor</td>
-           <td class="private-th"><button>write</button></td>
-         </tr>
-         <tr>
-           <td class="poss-th">1</td>
-           <td class="user-th">User</td>
-           <td class="score-th">713</td>
-           <td class="rank-th">Menthor</td>
-           <td class="private-th"><button>write</button></td>
-         </tr>
-         <tr>
-           <td class="poss-th">1</td>
-           <td class="user-th">User</td>
-           <td class="score-th">713</td>
-           <td class="rank-th">Menthor</td>
-           <td class="private-th"><button>write</button></td>
-         </tr>
-         <tr>
-           <td class="poss-th">1</td>
-           <td class="user-th">User</td>
-           <td class="score-th">713</td>
-           <td class="rank-th">Menthor</td>
-           <td class="private-th"><button>write</button></td>
-         </tr>
-         <tr>
-           <td class="poss-th">1</td>
-           <td class="user-th">User</td>
-           <td class="score-th">713</td>
-           <td class="rank-th">Menthor</td>
-           <td class="private-th"><button>write</button></td>
-         </tr>
-         <tr>
-           <td class="poss-th">1</td>
-           <td class="user-th">User</td>
-           <td class="score-th">713</td>
-           <td class="rank-th">Menthor</td>
-           <td class="private-th"><button>write</button></td>
-         </tr>
-         <tr>
-           <td class="poss-th">1</td>
-           <td class="user-th">User</td>
-           <td class="score-th">713</td>
-           <td class="rank-th">Menthor</td>
-           <td class="private-th"><button>write</button></td>
-         </tr>
-         <tr>
-           <td class="poss-th">1</td>
-           <td class="user-th">User</td>
-           <td class="score-th">713</td>
-           <td class="rank-th">Menthor</td>
-           <td class="private-th"><button>write</button></td>
-         </tr>
-         <tr>
-           <td class="poss-th">1</td>
-           <td class="user-th">User</td>
-           <td class="score-th">713</td>
-           <td class="rank-th">Menthor</td>
-           <td class="private-th"><button>write</button></td>
-         </tr>
        </table>
      </div>
     </div>
