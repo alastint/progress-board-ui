@@ -80,7 +80,7 @@ a{
   margin: 10px;
   border: none;
   border-collapse: collapse;
-  width: 600px;
+  width: 620px;
   font-size: 140%;
 }
 .progress-board-container table tr th{
@@ -116,10 +116,11 @@ tr td{
   text-align: center;
 }
 .rank-th{
-  max-width: 20px;
+  max-width: 35px;
 }
 .private-th{
   max-width: 15px;
+  padding-right: 17px !important;
 }
 .private-th button{
   border: 1px solid gray;
