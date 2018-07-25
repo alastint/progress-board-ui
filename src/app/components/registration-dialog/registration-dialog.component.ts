@@ -16,7 +16,7 @@ export class RegistrationDialogComponent implements OnInit {
     message: '',
     confirm: false,
     reject: false,
-    changed: false,
+    changed: false
   };
   @Input() targetItem: any = {};
   @Output() doConfirm: any = new EventEmitter();
@@ -25,7 +25,7 @@ export class RegistrationDialogComponent implements OnInit {
 
   constructor(
     public router: Router,
-    public _user: UserService,
+    public _user: UserService
   ) { }
 
   public ngOnInit() {

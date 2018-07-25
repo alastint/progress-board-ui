@@ -14,11 +14,11 @@
     <h3>Sign in</h3>
     <div class="login">
       <p>Email</p>
-      <input type="email" class="lInput" [(ngModel)]="user.email"  placeholder="Email" name="email">
+      <input type="email" [(ngModel)]="user.email"  placeholder="Email" name="email">
       <p>Password</p>
-      <input type="password" class="lInput" [(ngModel)]="user.password" placeholder="Password" name="password">
-      <button type="submit" id="login-btn" (click)="auth(user)">Log In</button>
-      <button type="button" id="regist-btn" (click)="showRegist = true">Register</button>
+      <input type="password" [(ngModel)]="user.password" placeholder="Password" name="password">
+      <button type="submit" id="loginBtn" (click)="auth(user)">Log In</button>
+      <button type="button" id="registBtn" (click)="showRegist = true">Register</button>
     </div>
   </div>
 </div>

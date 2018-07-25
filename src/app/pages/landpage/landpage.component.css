@@ -46,12 +46,12 @@ li{
   font-size: 15px;
   margin: 10px 0 10px 0;
 }
-#login-btn{
+#loginBtn{
   background: #4CAF50;
   border-bottom-left-radius: 6px;
   border-top-left-radius: 6px;
 }
-#regist-btn{
+#registBtn{
   background: #03A9F4;
   border-bottom-right-radius: 6px;
   border-top-right-radius: 6px;

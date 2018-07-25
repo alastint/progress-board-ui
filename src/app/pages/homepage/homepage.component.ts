@@ -32,9 +32,7 @@ export class HomepageComponent implements OnInit {
     this.chatMessages.push(message);
     this.chat.message = '';
   }
-  quit() {
+  public quit() {
     this.authservice.logOutFunk();
-    console.log('Log out sucsess');
-    this.router.navigate([ '', 'land']);
   }
 }

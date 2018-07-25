@@ -58,6 +58,6 @@
   <div class="allert-mess" *ngIf="user.password && options.passwordConfirm && (user.password !== options.passwordConfirm)">Password and confirm password don't match!</div>
   <div class="register-actions">
     <button type="button" name="cancel" (click)="do('reject')" *ngIf="options.reject">Cancel</button>
-    <button [disabled]="!(user.password && options.passwordConfirm && !(user.password !== options.passwordConfirm)) || !user.email" id="saveNpush" (click)="trySave(user) || do('confirm')">Register</button>
+    <button [disabled]="!(user.password && options.passwordConfirm && !(user.password !== options.passwordConfirm)) || !user.email" id="saveNpush" (click)="trySave(user)">Register</button>
   </div>
 </div>
