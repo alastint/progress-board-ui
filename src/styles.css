@@ -1,5 +1,7 @@
 @import "../node_modules/font-awesome/css/font-awesome.css";
-
+*{
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
 html, body{
   margin: 0;
   padding: 0;

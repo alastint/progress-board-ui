@@ -1,3 +1,147 @@
-<p>
-  homepage works!
-</p>
+<div class="background">
+  <a class="absolute-support"><i class="fas fa-question-circle"></i></a>
+  <div class="container-home-header">
+    <ul class="left-header-ul">
+      <li><a href="home/:id" class="big-name">Admin</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/">Progress</a></li>
+      <li><a href="/">Tasks</a></li>
+      <li><a href="/">Admin Side</a></li> <!--if user admin-->
+    </ul>
+    <ul class="right-header-ul">
+      <li><a>Score: 713</a></li>
+      <li><a>user.email</a></li>
+      <li><a><i class="fas fa-envelope"> Messages</i></a></li>
+      <li><a><i class="fas fa-cogs"></i></a></li>
+    </ul>
+  </div>
+  <div class="container-user-page">
+    <div class="container-content-part">
+     <div class="progress-board-container">
+       <table>
+         <thead>
+         <tr>
+           <th class="poss-th">Position</th>
+           <th class="user-th">User</th>
+           <th class="score-th">Score</th>
+           <th class="rank-th">Rank</th>
+           <th class="private-th">PM</th>
+         </tr>
+         </thead>
+          <tr>
+            <td class="poss-th">1</td>
+            <td class="user-th">User</td>
+            <td class="score-th">713</td>
+            <td class="rank-th">Menthor</td>
+            <td class="private-th"><button>write</button></td>
+          </tr>
+         <tr>
+           <td class="poss-th">1</td>
+           <td class="user-th">User</td>
+           <td class="score-th">713</td>
+           <td class="rank-th">Menthor</td>
+           <td class="private-th"><button>write</button></td>
+         </tr>
+         <tr>
+           <td class="poss-th">1</td>
+           <td class="user-th">User</td>
+           <td class="score-th">713</td>
+           <td class="rank-th">Menthor</td>
+           <td class="private-th"><button>write</button></td>
+         </tr>
+         <tr>
+           <td class="poss-th">1</td>
+           <td class="user-th">User</td>
+           <td class="score-th">713</td>
+           <td class="rank-th">Menthor</td>
+           <td class="private-th"><button>write</button></td>
+         </tr>
+         <tr>
+           <td class="poss-th">1</td>
+           <td class="user-th">User</td>
+           <td class="score-th">713</td>
+           <td class="rank-th">Menthor</td>
+           <td class="private-th"><button>write</button></td>
+         </tr>
+         <tr>
+           <td class="poss-th">1</td>
+           <td class="user-th">User</td>
+           <td class="score-th">713</td>
+           <td class="rank-th">Menthor</td>
+           <td class="private-th"><button>write</button></td>
+         </tr>
+         <tr>
+           <td class="poss-th">1</td>
+           <td class="user-th">User</td>
+           <td class="score-th">713</td>
+           <td class="rank-th">Menthor</td>
+           <td class="private-th"><button>write</button></td>
+         </tr>
+         <tr>
+           <td class="poss-th">1</td>
+           <td class="user-th">User</td>
+           <td class="score-th">713</td>
+           <td class="rank-th">Menthor</td>
+           <td class="private-th"><button>write</button></td>
+         </tr>
+         <tr>
+           <td class="poss-th">1</td>
+           <td class="user-th">User</td>
+           <td class="score-th">713</td>
+           <td class="rank-th">Menthor</td>
+           <td class="private-th"><button>write</button></td>
+         </tr>
+         <tr>
+           <td class="poss-th">1</td>
+           <td class="user-th">User</td>
+           <td class="score-th">713</td>
+           <td class="rank-th">Menthor</td>
+           <td class="private-th"><button>write</button></td>
+         </tr>
+       </table>
+     </div>
+    </div>
+    <div class="container-navigation-and-chat-bar">
+      <div class="mentor-online-display-container">
+        <p>Mentors Online: </p>
+        <ul>
+          <li><i class="fa fa-circle text-success"></i> <a>Harry</a></li>
+          <li><i class="fa fa-circle text-success"></i> <a>Hermyona</a></li>
+        </ul>
+        <a class="button-ask">Ask Mentor</a>
+      </div>
+      <div class="news-block">
+        <ul>
+          <li>
+            <i>19-03-1974</i>
+            <h3>Title</h3>
+            <p>Lorem ispum dolor sit amet
+              Lorem ispum dolor sit amet </p>
+            <a>More</a>
+          </li>
+          <li>
+            <i>19-03-1974</i>
+            <h3>Title</h3>
+            <p>Lorem ispum dolor sit amet
+              Lorem ispum dolor sit amet </p>
+            <a>More</a>
+          </li>
+        </ul>
+      </div>
+      <p>Chat</p>
+      <div class="chat">
+        <!--<textarea readonly></textarea>-->
+        <div class="chat-messages-container">
+          <div class="chat-message-block" *ngFor="let message of chatMessages" [ngClass]="(message.id % 2) ? 'pull-left' : 'pull-right'">
+            <div class="chat-message-author">{{message.author + message.timestamp}}</div>
+            <div class="chat-message-text">{{message.text}}</div>
+          </div>
+        </div>
+        <div class="chat-input-block">
+          <input type="text" class="chat-input" [(ngModel)]="chat.message">
+          <button type="button" (click)="sendMessage(chat.message)">Send</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

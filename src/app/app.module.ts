@@ -5,10 +5,9 @@ import { AppComponent } from './app.component';
 import {ApproutingModule} from './approuter.module';
 import {ApiService} from '../services/api';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import {AuthService} from '../services/authservice/auth.service';
+import {AuthService} from '../services/authservice/';
 import {FormsModule} from '@angular/forms';
 import {UserService} from '../services/userservice';
-import { LoginpageComponent } from './pages/loginpage/loginpage.component';
 import { UnknownpageComponent } from './pages/unknownpage/unknownpage.component';
 import { ManageuserComponent } from './pages/manageuser/manageuser.component';
 import {AuthGuardService} from '../services/authguard';
@@ -26,12 +25,11 @@ import { RegistrationDialogComponent } from './components';
     AppComponent,
     ConfirmDialogComponent,
     RegistrationDialogComponent,
-    LoginpageComponent,
+    LandpageComponent,
     UnknownpageComponent,
     ManageuserComponent,
     RecoveryComponent,
     HomepageComponent,
-    LandpageComponent,
     ProgressComponent,
     AdminsideComponent,
 
