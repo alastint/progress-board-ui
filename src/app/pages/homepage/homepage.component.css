@@ -1,0 +1,253 @@
+ul{
+  padding: 0;
+  margin: 0 0px 20px 20px;
+}
+li{
+  list-style: none;
+}
+i{
+  color: white;
+}
+a{
+  color: white;
+  text-decoration: none;
+}
+.background{
+  background: url("http://i.piccy.info/i9/73a11ee011254f699c2c5059da1944ac/1532451061/693337/1259664/background_2011768_1920.jpg");
+  height: 100%;
+  background-size: 100%;
+}
+.absolute-support{
+  position: absolute;
+  right: 10px;
+  top: 40px;
+  font-size: 40px;
+}
+/*********************header***************/
+.container-home-header{
+  padding: 8px 0;
+  background: #0f1922;
+  height: 22px;
+}
+.container-home-header a{
+  font-size: 20px;
+}
+.container-home-header ul{
+  display: flex;
+}
+.container-home-header ul li{
+  margin: 0 5px;
+}
+.left-header-ul{
+  float: left;
+  margin: 0 10%;
+}
+.right-header-ul{
+  float: right;
+  margin: 0 10%;
+}
+.right-header-ul li{
+  margin: 0 12px !important;
+}
+.big-name{
+  color: steelblue;
+  font-weight: bold;
+}
+
+/*****************conteiner***************/
+.container-user-page{
+  height: calc(100% - 38px);
+  margin: 0 10%;
+  background-color: rgba(0, 0, 0, .3 );
+  color: white;
+}
+.container-navigation-and-chat-bar{
+  background-color: rgba(0, 0, 0, .3 );
+  height: 100%;
+  width: 300px;
+  float: right;
+}
+.progress-board-container{
+  position: absolute;
+  top: 27%;
+  left: calc(50% - 330px);
+  border-radius: 8px;
+  background: url(https://previews.123rf.com/images/loskutnikov/loskutnikov1106/loskutnikov110600045/9719891-old-wooden-board-background.jpg);
+  border: 6px solid #8c5517;
+  box-shadow: 0px 50px 80px 20px rgba(0,0,0,.7);
+}
+.progress-board-container table{
+  margin: 10px;
+  border: none;
+  border-collapse: collapse;
+  width: 600px;
+  font-size: 140%;
+}
+.progress-board-container table tr th{
+  padding: 0 5px 0 17px;
+  text-align: center;
+}
+.progress-board-container thead{
+  padding: 0;
+}
+.progress-board-container tr {
+  text-align: center;
+  padding: 2px;
+}
+.progress-board-container tr:nth-child(even) {
+  background-color: #dddddd;
+  color: black;
+}
+.progress-board-container tr:nth-child(odd) {
+  stroke: black;
+}
+tr td{
+  padding: 0 3px 3px 3px;
+}
+.poss-th{
+  padding-left: 5px;
+  max-width: 20px;
+}
+.user-th{
+  text-align: center;
+  min-width: 15px;
+}
+.score-th{
+  text-align: center;
+}
+.rank-th{
+  max-width: 20px;
+}
+.private-th{
+  max-width: 15px;
+}
+.private-th button{
+  border: 1px solid gray;
+  height: 30px;
+  width: 60px;
+  border-radius: 8px;
+  background: #d5d5d5;
+  font-size: 17px;
+  margin-left: 6px;
+}
+/*bar*/
+.container-navigation-and-chat-bar p {
+  text-align: center;
+  margin-bottom: 3px;
+  font-size: 22px;
+}
+.button-ask{
+  font-size: 24px;
+  margin: 10px 20px 0;
+  background: cadetblue;
+  border-radius: 5px;
+  padding: 3px;
+}
+.mentor-online-display-container{
+  width: 60%;
+  margin: 45px auto;
+  border-radius: 5px;
+  padding: 10px 25px 25px 25px;
+  border: 1px solid white;
+  background: rgba(0, 0, 0, .3);
+}
+.mentor-online-display-container p{
+  margin: 0;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.mentor-online-display-container i{
+  font-size: 50%;
+  color: #4CAF50;
+}
+.mentor-online-display-container ul li{
+  padding: 3px;
+}
+.mentor-online-display-container ul li a{
+  margin-left: 4px;
+  font-size: 20px;
+}
+.news-block{
+  margin: 0 5% 0 5%;
+}
+.news-block h3{
+  margin: 0;
+}
+.news-block ul li{
+  margin-bottom: 15px;
+}
+.news-block p{
+  text-align: left;
+  font-size: 15px;
+  margin-top: 5px;
+}
+.chat{
+  height: 305px;
+  width: 240px;
+  /*background: mintcream;*/
+  margin: 0 auto;
+  border-radius: 7px;
+  border: 1px solid black;
+}
+.chat-input-block input{
+  width: 175px;
+}
+.chat-input-block{
+  margin: -5px auto;
+  width: 95%;
+}
+
+.chat textarea{
+  margin:4px 4px 0 4px ;
+  height: 266px;
+  width: 226px;
+  border: none;
+  background: mintcream;
+}
+
+.chat-messages-container {
+  background-color: #fff;
+  border: none;
+  border-radius: 6px;
+  color: black;
+  display: block;
+  font-size: 12px;
+  position: relative;
+  overflow-y: scroll;
+  margin: 5px;
+  padding: 10px;
+  height: 250px;
+  width: calc(100% - 33px);
+}
+.chat-message-block {
+  background-color: lightgrey;
+  border: none;
+  border-radius: 4px;
+  display: block;
+  position: relative;
+  margin: 20px auto;
+  padding: 5px;
+  text-align: left;
+  height: auto;
+  width: 200px;
+  max-width: 80%;
+}
+.chat-message-author {
+  font-size: 10px;
+  color: darkslategrey;
+  position: absolute;
+  left: 0;
+  top: -20px;
+}
+.chat-message-text {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}

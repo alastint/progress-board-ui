@@ -1,0 +1,22 @@
+@import "../node_modules/font-awesome/css/font-awesome.css";
+*{
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+/* You can add global styles to this file, and also import other style files */
+.angle-180 {
+  transform: rotate(180deg) !important;
+}
+
+/*****************************************
+               TABLE STYLES
+*****************************************/
+
+.table-box table thead tr th i.fas.fa-arrow-up {
+  transition: all .3s ease;
+}
