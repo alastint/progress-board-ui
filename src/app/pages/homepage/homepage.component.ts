@@ -32,7 +32,7 @@ export class HomepageComponent implements OnInit {
     this.getCurrentEmail();
     this.messageService.loadChat();
     setInterval(function() {
-      this.loadChat();
+      this.messageService.loadChat();
     }, 300000);
     this.messageService.newsBlockfunc();
   }
