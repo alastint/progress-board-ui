@@ -51,20 +51,11 @@ export class RegistrationDialogComponent implements OnInit {
   public trySave(user: any) {
       this._user.signUp(user).subscribe(
         (resp: any) => {
-          this.authservice.authenticate(user).subscribe(
-            (userdata: any) => {
-              console.log('resp', userdata);
-              if (userdata && userdata.data && userdata.data.authToken) {
-                localStorage. setItem('currentUser', JSON.stringify(userdata.data));
-                this.user.email = userdata.data.email;
-                console.log('Login Sucsess');
-                this.router.navigate([ '', 'home']);
-              }
-            },
-            (err: any) => {
-              console.log('err', err);
-            }
-          );
+          if (resp && resp.data && resp.data.authToken) {
+            localStorage. setItem('currentUser', JSON.stringify(resp.data));
+            console.log('Registration Sucsess');
+            this.router.navigate([ '', 'home']);
+          }
         },
         (err: any) => {
           console.log('err', err);
