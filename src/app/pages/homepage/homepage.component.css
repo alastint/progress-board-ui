@@ -172,7 +172,8 @@ tr td{
   margin: 0 5% 0 5%;
 }
 .news-block h3{
-  margin: 0;
+  margin: 0 0 10px 0;
+  text-align: center;
 }
 .news-block ul li{
   margin-bottom: 15px;
@@ -181,6 +182,12 @@ tr td{
   text-align: left;
   font-size: 15px;
   margin-top: 5px;
+}
+.news-block a {
+  margin: 0 90px;
+  background: brown;
+  padding: 6px;
+  border-radius: 6px;
 }
 .chat{
   height: 305px;

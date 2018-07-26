@@ -6,7 +6,9 @@ import {ApiService} from '../api';
 export class MessageService {
   public chat: any = { message: '', historyMessage: '' };
   public chatMessages: any[] = [];
+  public newsBlock: any[] = [];
   public urlParams = '';
+  public urlParamsNews = '';
   private authorId = 0;
   //
   constructor(
@@ -42,24 +44,38 @@ export class MessageService {
     const author1: any = { name: 'me', authorId: 1 };
     const author2: any = { name: 'Some idiot', authorId: 2 };
     let messageString = '';
-    this.urlParams = `?page=1&limit=10&order={"createdAt":-1}`;
+    this.urlParams = `?page=1&limit=10&order={"createdAt":-1}&where={"status":""}`;
+    this.urlParamsNews = `?page=1&limit=3&order={"createdAt":-1}&where={"status":"[NEWS]"}`;
     console.log(this.urlParams);
     this.userservice.getMessage(this.urlParams).subscribe(
       (responseLoad: any) => {
-        console.log('responseLoad', responseLoad);
         for (let i = responseLoad.rows.length - 1; i >= 0; i--) {
           messageString = responseLoad.rows[i].userId;
           this.authorId = appUser.id === messageString ? 1 : 2;
-          console.log('this.authorId', this.authorId, 'messageString', messageString );
-          const historyMessage = {
-            text: responseLoad.rows[i].text,
-            author: !(this.authorId % 2 || this.authorId === 0) ? author1.name : author2.name,
-            align: (this.authorId % 2 || this.authorId === 0) ? 1 : 2,
-            timestamp: responseLoad.rows[i].createdAt
-          };
-          console.log('align', historyMessage.align);
-          this.chatMessages.push(historyMessage);
-          console.log(this.chatMessages);
+          if (!(responseLoad.rows[i].status === '[NEWS]')) {
+            const historyMessage = {
+              text: responseLoad.rows[i].text,
+              author: !(this.authorId % 2 || this.authorId === 0) ? author1.name : author2.name,
+              align: (this.authorId % 2 || this.authorId === 0) ? 1 : 2,
+              timestamp: responseLoad.rows[i].createdAt
+            };
+            this.chatMessages.push(historyMessage);
+          }
+        }
+      }
+    );
+    this.userservice.getMessage(this.urlParamsNews).subscribe(
+      (responseLoad: any) => {
+        for (let i = 0; i < responseLoad.rows.length; i++) {
+          messageString = responseLoad.rows[i].userId;
+          this.authorId = appUser.id === messageString ? 1 : 2;
+          if ((responseLoad.rows[i].status === '[NEWS]')) {
+            const newsMessage = {
+              text: responseLoad.rows[i].text,
+              timestamp: responseLoad.rows[i].createdAt
+            };
+            this.newsBlock.push(newsMessage);
+          }
         }
       }
     );

@@ -9,6 +9,7 @@ import {MessageService} from '../../../services/messageservice';
 })
 export class HomepageComponent implements OnInit {
   public userEmail: '';
+  public adminUserId: boolean;
   public studentsScore: any[] =  [
     { position: 1, email: 'some@email.com', score: 817, rank: 'Mentor', },
     { position: 2, email: 'some@email.com', score: 717, rank: 'Mentor', },
@@ -43,6 +44,7 @@ export class HomepageComponent implements OnInit {
   public getCurrentEmail() {
     const userEmail: any = this.getCurrentUser();
     this.userEmail = userEmail.email;
+    this.adminUserId = (userEmail.id === 1) ? true : false;
     return userEmail;
   }
   public quit() {

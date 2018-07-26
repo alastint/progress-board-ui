@@ -49,22 +49,14 @@
         <a class="button-ask">Ask Mentor</a>
       </div>
       <div class="news-block">
+        <h3>News</h3>
         <ul>
-          <li>
-            <i>19-03-1974</i>
-            <h3>Title</h3>
-            <p>Lorem ispum dolor sit amet
-              Lorem ispum dolor sit amet </p>
-            <a>More</a>
-          </li>
-          <li>
-            <i>19-03-1974</i>
-            <h3>Title</h3>
-            <p>Lorem ispum dolor sit amet
-              Lorem ispum dolor sit amet </p>
-            <a>More</a>
+          <li *ngFor="let news of messageService.newsBlock">
+            <i>{{ news.timestamp }}</i>
+            <p>{{ news.text }}</p>
           </li>
         </ul>
+        <a *ngIf="this.adminUserId">New News</a>
       </div>
       <p>Chat</p>
       <div class="chat">
