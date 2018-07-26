@@ -10,7 +10,7 @@ import {UserService} from '../../../services/userservice';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  public chat: any = { message: '' };
+  public chat: any = { message: '', historyMessage: '' };
   public chatMessages: any[] = [];
   public urlParams = '';
   public studentsScore: any[] =  [
@@ -25,7 +25,7 @@ export class HomepageComponent implements OnInit {
     { position: 9, email: 'some@email.com', score: 199, rank: 'Mentor', },
     { position: 10, email: 'some@email.com', score: 100, rank: 'Mentor', }
     ];
-  public authorId = 2;
+  private authorId = 0;
 
   constructor(
     public authservice: AuthService,
@@ -69,16 +69,20 @@ export class HomepageComponent implements OnInit {
     console.log(this.urlParams);
     this.userservice.getMessage(this.urlParams).subscribe(
       (responseLoad: any) => {
+        console.log('responseLoad', responseLoad);
         for (let i = responseLoad.rows.length - 1; i >= 0; i--) {
           messageString = responseLoad.rows[i].userId;
-          appUser.id === messageString ? this.authorId = 2 : this.authorId = 1;
-          console.log('this.authorId', this.authorId);
+          this.authorId = appUser.id === messageString ? 1 : 2;
+          console.log('this.authorId', this.authorId, 'messageString', messageString );
           const historyMessage = {
             text: responseLoad.rows[i].text,
             author: !(this.authorId % 2 || this.authorId === 0) ? author1.name : author2.name,
+            align: (this.authorId % 2 || this.authorId === 0) ? 1 : 2,
             timestamp: responseLoad.rows[i].createdAt
           };
+          console.log('align', historyMessage.align);
           this.chatMessages.push(historyMessage);
+          console.log(this.chatMessages);
         }
       }
     );

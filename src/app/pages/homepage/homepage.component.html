@@ -70,7 +70,7 @@
       <div class="chat">
         <!--<textarea readonly></textarea>-->
         <div class="chat-messages-container">
-          <div class="chat-message-block" *ngFor="let message of chatMessages" [ngClass]="(authorId % 2) ? 'pull-left' : 'pull-right'">
+          <div class="chat-message-block" *ngFor="let message of chatMessages" [ngClass]="(this.message.align % 2) ? 'pull-left' : 'pull-right'">
             <div class="chat-message-author">{{message.author + message.timestamp}}</div>
             <div class="chat-message-text">{{message.text}}</div>
           </div>
