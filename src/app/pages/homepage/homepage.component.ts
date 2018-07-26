@@ -34,6 +34,7 @@ export class HomepageComponent implements OnInit {
     setInterval(function() {
       this.loadChat();
     }, 300000);
+    this.messageService.newsBlockfunc();
   }
   public getCurrentUser() {
     // Retrieve data by key from local storage

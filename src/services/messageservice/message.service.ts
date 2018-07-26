@@ -44,8 +44,7 @@ export class MessageService {
     const author1: any = { name: 'me', authorId: 1 };
     const author2: any = { name: 'Some idiot', authorId: 2 };
     let messageString = '';
-    this.urlParams = `?page=1&limit=10&order={"createdAt":-1}&where={"status":""}`;
-    this.urlParamsNews = `?page=1&limit=3&order={"createdAt":-1}&where={"status":"[NEWS]"}`;
+    this.urlParams = `?page=1&limit=10&order={"createdAt":-1}`;
     console.log(this.urlParams);
     this.userservice.getMessage(this.urlParams).subscribe(
       (responseLoad: any) => {
@@ -64,11 +63,12 @@ export class MessageService {
         }
       }
     );
+  }
+  public newsBlockfunc() {
+    this.urlParamsNews = `?page=1&limit=3&order={"createdAt":-1}&where={"status":"[NEWS]"}`;
     this.userservice.getMessage(this.urlParamsNews).subscribe(
       (responseLoad: any) => {
         for (let i = 0; i < responseLoad.rows.length; i++) {
-          messageString = responseLoad.rows[i].userId;
-          this.authorId = appUser.id === messageString ? 1 : 2;
           if ((responseLoad.rows[i].status === '[NEWS]')) {
             const newsMessage = {
               text: responseLoad.rows[i].text,
