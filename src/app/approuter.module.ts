@@ -19,6 +19,7 @@ const appRoutes: Routes = [
     children: [
       { path: '', component: ProgressComponent },
     ],
+    canActivate: [ AuthGuardService ]
   },
 
   { path: 'admin', component: AdminsideComponent,
