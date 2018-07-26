@@ -10,10 +10,10 @@ export class AuthGuardService implements CanActivate {
    * @returns {boolean}
    */
   canActivate(): boolean {
-    // if (!localStorage.getItem('currentUser')) {
-    //   this.router.navigate(['', 'land']);
-    //   return false;
-    // }
+    if (!localStorage.getItem('currentUser')) {
+      this.router.navigate(['', 'land']);
+      return false;
+    }
     return true;
   }
 }
