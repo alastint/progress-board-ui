@@ -70,14 +70,14 @@
       <div class="chat">
         <!--<textarea readonly></textarea>-->
         <div class="chat-messages-container">
-          <div class="chat-message-block" *ngFor="let message of chatMessages" [ngClass]="(this.message.align % 2) ? 'pull-left' : 'pull-right'">
+          <div class="chat-message-block" *ngFor="let message of messageService.chatMessages" [ngClass]="(this.message.align % 2) ? 'pull-left' : 'pull-right'">
             <div class="chat-message-author">{{message.author + message.timestamp}}</div>
             <div class="chat-message-text">{{message.text}}</div>
           </div>
         </div>
         <div class="chat-input-block">
-          <input type="text" class="chat-input" [(ngModel)]="chat.message">
-          <button type="button" (click)="sendMessage(chat.message)">Send</button>
+          <input type="text" class="chat-input" [(ngModel)]="messageService.chat.message">
+          <button type="button" (click)="messageService.sendMessage(messageService.chat.message)">Send</button>
         </div>
       </div>
     </div>

@@ -19,6 +19,7 @@ import { ProgressComponent } from './pages/progress/progress.component';
 import { AdminsideComponent } from './pages/adminside/adminside.component';
 import { ConfirmDialogComponent } from './components/';
 import { RegistrationDialogComponent } from './components';
+import {MessageService} from '../services/messageservice';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { RegistrationDialogComponent } from './components';
     ApiService,
     UserService,
     AuthService,
-    AuthGuardService
+    AuthGuardService,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })
