@@ -56,10 +56,10 @@
             <p>{{ news.text }}</p>
           </li>
         </ul>
-        <a *ngIf="this.adminUserId" (click)="openInput()">New News</a>
+        <a *ngIf="this.appUser && (this.appUser.role === 'admin' || this.appUser.role === 'super')" (click)="openInput()">New News</a>
         <div *ngIf="newsInputOpen" class="news-input">
           <input type="text" [(ngModel)]="messageService.chat.newsMessage">
-          <button (click)="messageService.sendNews(messageService.chat.newsMessage)" (click)="newsInputOpen = false">Add news</button>
+          <button (click)="sendNewsFunc()" (click)="newsInputOpen = false">Add news</button>
         </div>
       </div>
       <p>Chat</p>
@@ -73,7 +73,7 @@
         </div>
         <div class="chat-input-block">
           <input type="text" class="chat-input" [(ngModel)]="messageService.chat.message">
-          <button type="button" (click)="messageService.sendMessage(messageService.chat.message)">Send</button>
+          <button type="button" (click)="sendChatMessage()">Send</button>
         </div>
       </div>
     </div>

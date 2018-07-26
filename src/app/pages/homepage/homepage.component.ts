@@ -8,9 +8,10 @@ import {MessageService} from '../../../services/messageservice';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+  public appUser = this.messageService.getUserData();
   public userEmail: '';
   public adminUserId: boolean;
-  public newsInputOpen: boolean;
+  public newsInputOpen = false;
   public studentsScore: any[] =  [
     { position: 1, email: 'some@email.com', score: 817, rank: 'Mentor', },
     { position: 2, email: 'some@email.com', score: 717, rank: 'Mentor', },
@@ -30,7 +31,6 @@ export class HomepageComponent implements OnInit {
   ) { }
 
   public ngOnInit() {
-    this.getCurrentEmail();
     this.messageService.loadChat();
     setInterval(function() {
       this.messageService.loadChat();
@@ -38,9 +38,7 @@ export class HomepageComponent implements OnInit {
     this.messageService.newsBlockfunc();
   }
   public openInput() {
-    if ( this.newsInputOpen ) {
-      this.newsInputOpen = false;
-    } else { this.newsInputOpen = true; }
+    this.newsInputOpen = !this.newsInputOpen;
   }
   public getCurrentUser() {
     // Retrieve data by key from local storage
@@ -48,13 +46,17 @@ export class HomepageComponent implements OnInit {
     // Return user object if data in local storage exist, or empty object if no user data available
     return typeof userString === 'string' ? JSON.parse(userString) : {};
   }
-  public getCurrentEmail() {
-    const userEmail: any = this.getCurrentUser();
-    this.userEmail = userEmail.email;
-    this.adminUserId = (userEmail.id === 1) ? true : false;
-    return userEmail;
-  }
   public quit() {
     this.authservice.logOutFunk();
+  }
+  public sendChatMessage() {
+    if (this.messageService.chat.message) {
+      this.messageService.sendMessage(this.messageService.chat.message);
+    }
+  }
+  public sendNewsFunc() {
+    if (this.messageService.chat.newsMessage) {
+      this.messageService.sendNews(this.messageService.chat.newsMessage);
+    }
   }
 }

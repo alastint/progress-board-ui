@@ -35,7 +35,10 @@ export class MessageService {
     this.api.post(`/message`, {text: message.text, userId: appUser.id}).subscribe(
       (resp: any) => {
         console.log('resp', resp);
-      }
+      },
+    (err) => {
+        console.log (err);
+    }
     );
     this.chat.message = '';
   }
@@ -61,7 +64,10 @@ export class MessageService {
             this.chatMessages.push(historyMessage);
           }
         }
-      }
+      },
+    (err) => {
+      console.log (err);
+    }
     );
   }
   public newsBlockfunc() {
@@ -77,6 +83,9 @@ export class MessageService {
             this.newsBlock.push(newsMessage);
           }
         }
+      },
+      (err) => {
+        console.log (err);
       }
     );
   }
@@ -91,6 +100,9 @@ export class MessageService {
     this.api.post(`/message`, {text: newsMessage.text, userId: appUser.id, status: '[NEWS]' }).subscribe(
       (resp: any) => {
         console.log('resp', resp);
+      },
+      (err) => {
+        console.log (err);
       }
     );
     this.newsBlock = [];
