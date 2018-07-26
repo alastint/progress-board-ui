@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../../services/authservice';
 import {Router} from '@angular/router';
 import {ApiService} from '../../../services/api';
+import {UserService} from '../../../services/userservice';
 
 @Component({
   selector: 'app-homepage',
@@ -11,7 +12,7 @@ import {ApiService} from '../../../services/api';
 export class HomepageComponent implements OnInit {
   public chat: any = { message: '' };
   public chatMessages: any[] = [];
-  private authorId = 0;
+  public urlParams = '';
   public studentsScore: any[] =  [
     { position: 1, email: 'some@email.com', score: 817, rank: 'Mentor', },
     { position: 2, email: 'some@email.com', score: 717, rank: 'Mentor', },
@@ -24,13 +25,16 @@ export class HomepageComponent implements OnInit {
     { position: 9, email: 'some@email.com', score: 199, rank: 'Mentor', },
     { position: 10, email: 'some@email.com', score: 100, rank: 'Mentor', }
     ];
+  public authorId = 2;
 
   constructor(
     public authservice: AuthService,
-    public api: ApiService
+    public api: ApiService,
+    public userservice: UserService
   ) { }
 
   public ngOnInit() {
+    this.loadChat();
   }
   public getUserData() {
     // Retrieve data by key from local storage
@@ -38,24 +42,10 @@ export class HomepageComponent implements OnInit {
     // Return user object if data in local storage exist, or empty object if no user data available
     return typeof userString === 'string' ? JSON.parse(userString) : {};
   }
-  public getMessageData() {
-    let messageString = '';
-    this.api.get(`/message/12`).subscribe(
-      (resp: any) => {
-        messageString = resp.userId;
-      }
-    );
-    console.log('messageString', messageString);
-    return messageString;
-  }
-
   public sendMessage(text: string) {
     const author1: any = { name: 'me', authorId: 1 };
     const author2: any = { name: 'Some idiot', authorId: 2 };
     const appUser: any = this.getUserData();
-    const messages: any = this.getMessageData();
-    console.log('appUser.id', appUser.id, 'messages', messages);
-    appUser.id === messages.userId ? this.authorId = 1 : this.authorId = 2;
     const message: any = {
       text,
       author: !(this.authorId % 2 && this.authorId !== 0) ? author1.name : author2.name,
@@ -69,6 +59,29 @@ export class HomepageComponent implements OnInit {
       }
     );
     this.chat.message = '';
+  }
+  public loadChat() {
+    const appUser: any = this.getUserData();
+    const author1: any = { name: 'me', authorId: 1 };
+    const author2: any = { name: 'Some idiot', authorId: 2 };
+    let messageString = '';
+    this.urlParams = `?page=1&limit=10&order={"createdAt":-1}`;
+    console.log(this.urlParams);
+    this.userservice.getMessage(this.urlParams).subscribe(
+      (responseLoad: any) => {
+        for (let i = responseLoad.rows.length - 1; i >= 0; i--) {
+          messageString = responseLoad.rows[i].userId;
+          appUser.id === messageString ? this.authorId = 2 : this.authorId = 1;
+          console.log('this.authorId', this.authorId);
+          const historyMessage = {
+            text: responseLoad.rows[i].text,
+            author: !(this.authorId % 2 || this.authorId === 0) ? author1.name : author2.name,
+            timestamp: responseLoad.rows[i].createdAt
+          };
+          this.chatMessages.push(historyMessage);
+        }
+      }
+    );
   }
   public quit() {
     this.authservice.logOutFunk();
