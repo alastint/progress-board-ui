@@ -10,6 +10,7 @@ import {MessageService} from '../../../services/messageservice';
 export class HomepageComponent implements OnInit {
   public userEmail: '';
   public adminUserId: boolean;
+  public newsInputOpen: boolean;
   public studentsScore: any[] =  [
     { position: 1, email: 'some@email.com', score: 817, rank: 'Mentor', },
     { position: 2, email: 'some@email.com', score: 717, rank: 'Mentor', },
@@ -35,6 +36,11 @@ export class HomepageComponent implements OnInit {
       this.messageService.loadChat();
     }, 300000);
     this.messageService.newsBlockfunc();
+  }
+  public openInput() {
+    if ( this.newsInputOpen ) {
+      this.newsInputOpen = false;
+    } else { this.newsInputOpen = true; }
   }
   public getCurrentUser() {
     // Retrieve data by key from local storage

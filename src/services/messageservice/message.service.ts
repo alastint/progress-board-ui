@@ -4,7 +4,7 @@ import {ApiService} from '../api';
 
 @Injectable()
 export class MessageService {
-  public chat: any = { message: '', historyMessage: '' };
+  public chat: any = { message: '', newsMessage: ''};
   public chatMessages: any[] = [];
   public newsBlock: any[] = [];
   public urlParams = '';
@@ -65,7 +65,7 @@ export class MessageService {
     );
   }
   public newsBlockfunc() {
-    this.urlParamsNews = `?page=1&limit=3&order={"createdAt":-1}&where={"status":"[NEWS]"}`;
+    this.urlParamsNews = `?page=1&limit=2&order={"createdAt":-1}&where={"status":"[NEWS]"}`;
     this.userservice.getMessage(this.urlParamsNews).subscribe(
       (responseLoad: any) => {
         for (let i = 0; i < responseLoad.rows.length; i++) {
@@ -79,5 +79,22 @@ export class MessageService {
         }
       }
     );
+  }
+  public sendNews(text: string) {
+    const appUser: any = this.getUserData();
+    const newsMessage: any = {
+      text,
+      timestamp: new Date().toISOString()
+    };
+    this.newsBlock.push(newsMessage);
+    console.log('message.text', newsMessage.text);
+    this.api.post(`/message`, {text: newsMessage.text, userId: appUser.id, status: '[NEWS]' }).subscribe(
+      (resp: any) => {
+        console.log('resp', resp);
+      }
+    );
+    this.newsBlock = [];
+    this.chat.newsMessage = '';
+    this.newsBlockfunc();
   }
 }
