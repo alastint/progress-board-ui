@@ -8,6 +8,7 @@ import {MessageService} from '../../../services/messageservice';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
+  public userEmail: '';
   public studentsScore: any[] =  [
     { position: 1, email: 'some@email.com', score: 817, rank: 'Mentor', },
     { position: 2, email: 'some@email.com', score: 717, rank: 'Mentor', },
@@ -27,12 +28,23 @@ export class HomepageComponent implements OnInit {
   ) { }
 
   public ngOnInit() {
+    this.getCurrentEmail();
     this.messageService.loadChat();
     setInterval(function() {
       this.loadChat();
     }, 300000);
   }
-
+  public getCurrentUser() {
+    // Retrieve data by key from local storage
+    const userString: string = localStorage.getItem('currentUser');
+    // Return user object if data in local storage exist, or empty object if no user data available
+    return typeof userString === 'string' ? JSON.parse(userString) : {};
+  }
+  public getCurrentEmail() {
+    const userEmail: any = this.getCurrentUser();
+    this.userEmail = userEmail.email;
+    return userEmail;
+  }
   public quit() {
     this.authservice.logOutFunk();
   }
