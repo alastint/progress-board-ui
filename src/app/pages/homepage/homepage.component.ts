@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../../../services/authservice';
-import {Router} from '@angular/router';
+import {MessageService} from '../../../services/messageservice';
 
 @Component({
   selector: 'app-homepage',
@@ -8,8 +8,10 @@ import {Router} from '@angular/router';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent implements OnInit {
-  public chat: any = { message: '' };
-  public chatMessages: any[] = [];
+  public appUser = this.messageService.getUserData();
+  public userEmail: '';
+  public adminUserId: boolean;
+  public newsInputOpen = false;
   public studentsScore: any[] =  [
     { position: 1, email: 'some@email.com', score: 817, rank: 'Mentor', },
     { position: 2, email: 'some@email.com', score: 717, rank: 'Mentor', },
@@ -25,26 +27,36 @@ export class HomepageComponent implements OnInit {
 
   constructor(
     public authservice: AuthService,
-    public router: Router
+    public messageService: MessageService
   ) { }
 
   public ngOnInit() {
+    this.messageService.loadChat();
+    setInterval(function() {
+      this.messageService.loadChat();
+    }, 300000);
+    this.messageService.newsBlockfunc();
   }
-
-  public sendMessage(text: string) {
-    const author1: any = { name: 'me', id: 1 };
-    const author2: any = { name: 'Some idiot', id: 2 };
-    const id: number = this.chatMessages.length + 1;
-    const message: any = {
-      text,
-      id,
-      author: !(id % 2) ? author1.name : author2.name,
-      timestamp: new Date().toISOString()
-    };
-    this.chatMessages.push(message);
-    this.chat.message = '';
+  public openInput() {
+    this.newsInputOpen = !this.newsInputOpen;
+  }
+  public getCurrentUser() {
+    // Retrieve data by key from local storage
+    const userString: string = localStorage.getItem('currentUser');
+    // Return user object if data in local storage exist, or empty object if no user data available
+    return typeof userString === 'string' ? JSON.parse(userString) : {};
   }
   public quit() {
     this.authservice.logOutFunk();
+  }
+  public sendChatMessage() {
+    if (this.messageService.chat.message) {
+      this.messageService.sendMessage(this.messageService.chat.message);
+    }
+  }
+  public sendNewsFunc() {
+    if (this.messageService.chat.newsMessage) {
+      this.messageService.sendNews(this.messageService.chat.newsMessage);
+    }
   }
 }

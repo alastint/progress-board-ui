@@ -11,7 +11,7 @@
     </ul>
     <ul class="right-header-ul">
       <li><a>Score: 713</a></li>
-      <li><a>user.email</a></li>
+      <li><a>{{this.userEmail}}</a></li>
       <li><a><i class="fas fa-envelope"> Messages</i></a></li>
       <li (click)="quit()"><a><i class="fas fa-cogs"></i></a></li>
     </ul>
@@ -49,35 +49,31 @@
         <a class="button-ask">Ask Mentor</a>
       </div>
       <div class="news-block">
+        <h3>News</h3>
         <ul>
-          <li>
-            <i>19-03-1974</i>
-            <h3>Title</h3>
-            <p>Lorem ispum dolor sit amet
-              Lorem ispum dolor sit amet </p>
-            <a>More</a>
-          </li>
-          <li>
-            <i>19-03-1974</i>
-            <h3>Title</h3>
-            <p>Lorem ispum dolor sit amet
-              Lorem ispum dolor sit amet </p>
-            <a>More</a>
+          <li *ngFor="let news of messageService.newsBlock">
+            <i>{{ news.timestamp }}</i>
+            <p>{{ news.text }}</p>
           </li>
         </ul>
+        <a *ngIf="this.appUser && (this.appUser.role === 'admin' || this.appUser.role === 'super')" (click)="openInput()">New News</a>
+        <div *ngIf="newsInputOpen" class="news-input">
+          <input type="text" [(ngModel)]="messageService.chat.newsMessage">
+          <button (click)="sendNewsFunc()" (click)="newsInputOpen = false">Add news</button>
+        </div>
       </div>
       <p>Chat</p>
       <div class="chat">
         <!--<textarea readonly></textarea>-->
         <div class="chat-messages-container">
-          <div class="chat-message-block" *ngFor="let message of chatMessages" [ngClass]="(message.id % 2) ? 'pull-left' : 'pull-right'">
+          <div class="chat-message-block" *ngFor="let message of messageService.chatMessages" [ngClass]="(this.message.align % 2) ? 'pull-left' : 'pull-right'">
             <div class="chat-message-author">{{message.author + message.timestamp}}</div>
             <div class="chat-message-text">{{message.text}}</div>
           </div>
         </div>
         <div class="chat-input-block">
-          <input type="text" class="chat-input" [(ngModel)]="chat.message">
-          <button type="button" (click)="sendMessage(chat.message)">Send</button>
+          <input type="text" class="chat-input" [(ngModel)]="messageService.chat.message">
+          <button type="button" (click)="sendChatMessage()">Send</button>
         </div>
       </div>
     </div>
