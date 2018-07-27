@@ -9,6 +9,7 @@ export class UserService {
   protected path = '/user';
   protected message = '/message';
   protected pathSingUp = '/signup';
+  protected question = '/question_answer';
 
   constructor(
     public api: ApiService
@@ -34,5 +35,8 @@ export class UserService {
 
   public getMessage(params: string): Observable<HttpResponse<any>> {
     return this.api.get(`${this.message}${params || ''}`);
+  }
+  public getQAResponce(params:string): Observable<HttpResponse<any>> {
+    return this.api.get(`${this.question}${params || ''}`);
   }
 }

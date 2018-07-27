@@ -1,0 +1,20 @@
+<div class="progress-board-container">
+  <table>
+    <thead>
+    <tr>
+      <th class="poss-th">Position</th>
+      <th class="user-th">User</th>
+      <th class="score-th">Score</th>
+      <th class="rank-th">Rank</th>
+      <th class="private-th">PM</th>
+    </tr>
+    </thead>
+    <tr *ngFor=" let student of studentsScore">
+      <td class="poss-th">{{ student.position }}</td>
+      <td class="user-th">{{ student.email }}</td>
+      <td class="score-th">{{ student.score }}</td>
+      <td class="rank-th">{{ student.rank }}</td>
+      <td class="private-th"><button>write</button></td>
+    </tr>
+  </table>
+</div>

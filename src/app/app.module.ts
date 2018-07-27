@@ -21,6 +21,7 @@ import { ConfirmDialogComponent } from './components/';
 import { RegistrationDialogComponent } from './components';
 import {MessageService} from '../services/messageservice';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { MentorComponent } from './pages/mentor/mentor.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     ProgressComponent,
     AdminsideComponent,
     DashboardComponent,
+    MentorComponent,
 
   ],
   imports: [

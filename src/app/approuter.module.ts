@@ -9,6 +9,7 @@ import {RecoveryComponent} from './pages/recovery/recovery.component';
 import {HomepageComponent} from './pages/homepage/homepage.component';
 import {AdminsideComponent} from './pages/adminside/adminside.component';
 import {DashboardComponent} from "./pages/dashboard/dashboard.component";
+import {MentorComponent} from "./pages/mentor/mentor.component";
 
 
 
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
     children: [
       { path: '', component: DashboardComponent  },
       { path: 'progress', component: ProgressComponent },
+      { path: 'mentor', component: MentorComponent },
     ],
     canActivate: [ AuthGuardService ]
   },
