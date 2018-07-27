@@ -1,3 +1,9 @@
+<app-questionanswer-dialog
+  *ngIf="answerOpen"
+  [options]="{send: true, cancel: true, answerOpen: true}"
+  (doConfirm)="sendMessage($event)"
+  (doReject)="reject()"
+></app-questionanswer-dialog>
 <div class="mentor-dashboard">
     <table>
       <thead>
@@ -10,7 +16,7 @@
       <tr *ngFor=" let question of questionBoard">
         <td class="question-author">{{ question.author }}</td>
         <td class="question">{{ question.title }}</td>
-        <td class="question-answer"><a>Answer</a></td>
+        <td class="question-answer"><a (click)="answerOpen = true">Answer</a></td>
       </tr>
     </table>
 </div>

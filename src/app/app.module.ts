@@ -22,6 +22,7 @@ import { RegistrationDialogComponent } from './components';
 import {MessageService} from '../services/messageservice';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { MentorComponent } from './pages/mentor/mentor.component';
+import { QuestionanswerDialogComponent } from './components/questionanswer-dialog/questionanswer-dialog.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MentorComponent } from './pages/mentor/mentor.component';
     AdminsideComponent,
     DashboardComponent,
     MentorComponent,
+    QuestionanswerDialogComponent,
 
   ],
   imports: [

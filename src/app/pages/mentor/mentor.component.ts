@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../../../services/userservice";
-import {AuthService} from "../../../services/authservice";
 
 @Component({
   selector: 'app-mentor',
@@ -10,6 +9,7 @@ import {AuthService} from "../../../services/authservice";
 export class MentorComponent implements OnInit {
   public urlParams = '';
   public questionBoard: any[] = [];
+  public answerOpen = false;
   constructor(
     public userService: UserService,
   ) { }
@@ -38,5 +38,12 @@ export class MentorComponent implements OnInit {
       }
     );
   }
-
+  public sendMessage() {
+    console.log('send clicked');
+    this.answerOpen = false;
+  }
+  public reject() {
+    console.log('reject clicked');
+    this.answerOpen = false;
+  }
 }
