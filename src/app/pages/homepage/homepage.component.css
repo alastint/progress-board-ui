@@ -67,70 +67,7 @@ a{
   width: 300px;
   float: right;
 }
-.progress-board-container{
-  position: absolute;
-  top: 27%;
-  left: calc(50% - 330px);
-  border-radius: 8px;
-  background: url(https://previews.123rf.com/images/loskutnikov/loskutnikov1106/loskutnikov110600045/9719891-old-wooden-board-background.jpg);
-  border: 6px solid #8c5517;
-  box-shadow: 0px 50px 80px 20px rgba(0,0,0,.7);
-}
-.progress-board-container table{
-  margin: 10px;
-  border: none;
-  border-collapse: collapse;
-  width: 620px;
-  font-size: 140%;
-}
-.progress-board-container table tr th{
-  padding: 0 5px 0 17px;
-  text-align: center;
-}
-.progress-board-container thead{
-  padding: 0;
-}
-.progress-board-container tr {
-  text-align: center;
-  padding: 2px;
-}
-.progress-board-container tr:nth-child(even) {
-  background-color: #dddddd;
-  color: black;
-}
-.progress-board-container tr:nth-child(odd) {
-  stroke: black;
-}
-tr td{
-  padding: 0 3px 3px 3px;
-}
-.poss-th{
-  padding-left: 5px;
-  max-width: 20px;
-}
-.user-th{
-  text-align: center;
-  min-width: 15px;
-}
-.score-th{
-  text-align: center;
-}
-.rank-th{
-  max-width: 35px;
-}
-.private-th{
-  max-width: 15px;
-  padding-right: 17px !important;
-}
-.private-th button{
-  border: 1px solid gray;
-  height: 30px;
-  width: 60px;
-  border-radius: 8px;
-  background: #d5d5d5;
-  font-size: 17px;
-  margin-left: 6px;
-}
+
 /*bar*/
 .container-navigation-and-chat-bar p {
   text-align: center;

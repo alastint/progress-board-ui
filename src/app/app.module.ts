@@ -20,6 +20,7 @@ import { AdminsideComponent } from './pages/adminside/adminside.component';
 import { ConfirmDialogComponent } from './components/';
 import { RegistrationDialogComponent } from './components';
 import {MessageService} from '../services/messageservice';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {MessageService} from '../services/messageservice';
     HomepageComponent,
     ProgressComponent,
     AdminsideComponent,
+    DashboardComponent,
 
   ],
   imports: [

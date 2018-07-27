@@ -8,6 +8,7 @@ import {ProgressComponent} from './pages/progress/progress.component';
 import {RecoveryComponent} from './pages/recovery/recovery.component';
 import {HomepageComponent} from './pages/homepage/homepage.component';
 import {AdminsideComponent} from './pages/adminside/adminside.component';
+import {DashboardComponent} from "./pages/dashboard/dashboard.component";
 
 
 
@@ -17,7 +18,8 @@ const appRoutes: Routes = [
   { path: 'recovery', component: RecoveryComponent },
   { path: 'home', component: HomepageComponent,
     children: [
-      { path: '', component: ProgressComponent },
+      { path: '', component: DashboardComponent  },
+      { path: 'progress', component: ProgressComponent },
     ],
     canActivate: [ AuthGuardService ]
   },

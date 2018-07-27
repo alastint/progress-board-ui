@@ -10,7 +10,6 @@ import {MessageService} from '../../../services/messageservice';
 export class HomepageComponent implements OnInit {
   public appUser = this.messageService.getUserData();
   public userEmail: '';
-  public adminUserId: boolean;
   public newsInputOpen = false;
   public studentsScore: any[] =  [
     { position: 1, email: 'some@email.com', score: 817, rank: 'Mentor', },
