@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from "../../../services/userservice";
+import { UserService } from "../../../services/userservice";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-mentor',
@@ -9,9 +10,9 @@ import {UserService} from "../../../services/userservice";
 export class MentorComponent implements OnInit {
   public urlParams = '';
   public questionBoard: any[] = [];
-  public answerOpen = false;
   constructor(
     public userService: UserService,
+    public router: Router
   ) { }
 
   ngOnInit() {
@@ -26,7 +27,10 @@ export class MentorComponent implements OnInit {
             const questionLine = {
               author: 'someIdiot',
               title: resp.rows[i].title,
-              timestamp: resp.rows[i].createdAt
+              timestamp: resp.rows[i].createdAt,
+              id: i,
+              status: resp.rows[i].status,
+              questionId: resp.rows[i].id
             };
             this.questionBoard.push(questionLine);
           }
@@ -38,12 +42,7 @@ export class MentorComponent implements OnInit {
       }
     );
   }
-  public sendMessage() {
-    console.log('send clicked');
-    this.answerOpen = false;
-  }
-  public reject() {
-    console.log('reject clicked');
-    this.answerOpen = false;
+  public goToDetails(id) {
+    this.router.navigate(['home', 'discuss', id]);
   }
 }

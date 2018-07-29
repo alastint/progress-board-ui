@@ -34,6 +34,9 @@
   width: 438px;
   margin-bottom: 15px;
 }
+.dialog-answer-container textarea{
+  overflow-y: auto;
+}
 .dialog-answer-container-active {
   top: calc(50vh - 110px);
 }

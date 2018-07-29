@@ -1,5 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Router} from "@angular/router";
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from "@angular/router";
+import {HomepageComponent} from "../../pages/homepage/homepage.component";
 
 @Component({
   selector: 'app-questionanswer-dialog',
@@ -21,6 +22,7 @@ export class QuestionanswerDialogComponent implements OnInit {
 
   constructor(
     public router: Router,
+    public HomepageComponent: HomepageComponent
   ) { }
 
   public ngOnInit() {
@@ -28,7 +30,6 @@ export class QuestionanswerDialogComponent implements OnInit {
   }
 
   public do(action: string) {
-    this.answerOpen = false;
     setTimeout(() => {
       switch (action) {
         case 'confirm':

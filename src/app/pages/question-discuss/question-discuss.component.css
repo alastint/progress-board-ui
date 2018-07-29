@@ -1,0 +1,39 @@
+.question-page-container{
+  margin: 50px 8%;
+  background: white;
+  height: 100%;
+  border-radius: 4px;
+  color: black;
+  padding: 15px;
+}
+.ask-container{
+  max-height: 400px;
+  overflow-y: auto;
+  border: 1px solid gray;
+  padding: 10px;
+  border-radius: 3px;
+}
+.ask-answer input{
+  width: 999px;
+}
+.ask-answer textarea{
+  margin-top: 15px;
+  overflow-y: auto;
+}
+.answers{
+  height: 470px;
+  overflow-y: auto;
+  margin: 10px 0;
+  border: 1px solid gray;
+}
+.answers ul{
+  padding-left: 10px;
+}
+.answers li {
+  background: lightslategrey;
+  padding: 1px 10px;
+  margin: 10px 0;
+  list-style: none;
+  width: calc(100% - 20px);
+  border-radius: 4px;
+}

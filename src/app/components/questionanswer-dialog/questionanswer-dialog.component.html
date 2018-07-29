@@ -1,9 +1,8 @@
 <div class="dialog-answer-overlay" (click)="do('reject')" [ngClass]="{'dialog-answer-overlay-active':answerOpen}"></div>
 <div class="dialog-answer-container" [ngClass]="{'dialog-answer-container-active':answerOpen}">
   <div class="dialog-answer-message">
-    <input type="text" disabled placeholder="some Idiot (as creator of question)">
-    <input type="text" disabled placeholder="re: question">
-    <textarea id="" cols="60" rows="10"></textarea>
+    <input type="text" placeholder="Title of question" [(ngModel)]="this.HomepageComponent.title">
+    <textarea id="" cols="60" rows="10" placeholder="Details..." [(ngModel)]="this.HomepageComponent.description"></textarea>
   </div>
   <div class="dialog-answer-actions">
     <button type="button" name="cancel" (click)="do('reject')" *ngIf="options.cancel">Cancel</button>

@@ -1,3 +1,9 @@
+<app-questionanswer-dialog
+  *ngIf="answerOpen"
+  [options]="{send: true, cancel: true, answerOpen: true}"
+  (doConfirm)="sendMessage($event)"
+  (doReject)="reject()"
+></app-questionanswer-dialog>
 <div class="background">
   <a class="absolute-support"><i class="fas fa-question-circle"></i></a>
   <div class="container-home-header">
@@ -27,7 +33,7 @@
           <li><i class="fa fa-circle text-success"></i> <a>Harry</a></li>
           <li><i class="fa fa-circle text-success"></i> <a>Hermyona</a></li>
         </ul>
-        <a class="button-ask">Ask Mentor</a>
+        <a class="button-ask"  (click)="answerOpenFunc()">Ask Mentor</a>
       </div>
       <div class="news-block">
         <h3>News</h3>

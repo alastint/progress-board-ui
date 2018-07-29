@@ -55,6 +55,10 @@ a{
 }
 
 /*****************conteiner***************/
+.container-content-part{
+  width: 80.2%;
+  float: left;
+}
 .container-user-page{
   height: calc(100% - 38px);
   margin: 0 10%;

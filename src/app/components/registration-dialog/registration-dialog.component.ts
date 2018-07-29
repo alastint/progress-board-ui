@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {UserService} from '../../../services/userservice';
+import { Router } from '@angular/router';
+import { UserService } from '../../../services/userservice';
 
 @Component({
   selector: 'app-registration-dialog',
