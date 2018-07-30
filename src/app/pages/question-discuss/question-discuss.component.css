@@ -25,6 +25,7 @@
   overflow-y: auto;
   margin: 10px 0;
   border: 1px solid gray;
+  transition: all .2s ease;
 }
 .answers ul{
   padding-left: 10px;

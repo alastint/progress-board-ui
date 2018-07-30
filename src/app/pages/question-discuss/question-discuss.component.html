@@ -1,14 +1,13 @@
 <div class="question-page-container">
   <div class="ask-container">
-    <i>{{ author }} </i>
-    <i> {{ date }}</i>
-    <h3>{{ title }}</h3>
-    <p>{{ description }}</p>
+    <i>{{ options.author }} </i>
+    <i> {{ options.date }}</i>
+    <h3>{{ options.title }}</h3>
+    <p>{{ options.description }}</p>
   </div>
-  <div class="answers">
+  <div class="answers" #answersContainer>
     <ul>
-      <li *ngFor="let answer of answers" class="answers-list">
-        <i>{{ author }} </i>
+      <li *ngFor="let answer of options.answers" class="answers-list">
         <i>{{ answer.createdAt }}</i>
         <p>{{ answer.title }}</p>
         <p>{{ answer.description }}</p>
@@ -16,7 +15,7 @@
     </ul>
   </div>
   <div class="ask-answer">
-    <input type="text" [(ngModel)]="questionService.newAnswer.title"  >
+    <input type="text" [(ngModel)]="questionService.newAnswer.title">
     <textarea cols="140" rows="5"[(ngModel)]="questionService.newAnswer.description"></textarea>
     <button (click)="sendAnswer()">Send</button>
   </div>

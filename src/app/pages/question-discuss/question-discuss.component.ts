@@ -1,29 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import {QuestionAnswerService} from "../../../services/question-answer";
-import {Observable} from "rxjs/index";
-import {ActivatedRoute} from "@angular/router";
+import { AfterViewChecked, Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { QuestionAnswerService } from "../../../services/question-answer";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: 'app-question-discuss',
   templateUrl: './question-discuss.component.html',
   styleUrls: ['./question-discuss.component.css']
 })
-export class QuestionDiscussComponent implements OnInit {
-  public question = {};
-  public title = '';
-  public description = '';
-  public author = '';
-  public date = '';
-  public answers: any [] = [];
-  public id = 0;
-  public answersObject = {};
+
+export class QuestionDiscussComponent implements OnInit, AfterViewChecked {
+  @ViewChild('answersContainer') public scrolledContainer: ElementRef;
+  public options: any = {
+    question: {},
+    title: '',
+    description: '',
+    author: '',
+    date: '',
+    answers: [],
+    id: 0
+  };
 
   constructor(
     public questionService: QuestionAnswerService,
     public route: ActivatedRoute,
   ) { }
 
-  ngOnInit() {
+  public ngOnInit() {
+    // Parse url param with id of required question and request details for displaying on UI
     this.route.params.subscribe((param: any) => {
       if (param['id']) {
         this.loadQuestion(param['id'])
@@ -31,18 +34,24 @@ export class QuestionDiscussComponent implements OnInit {
     });
   }
 
+  public ngAfterViewChecked() {
+    this.scrollToBottom();
+  }
+
   public loadQuestion(id: number) {
       if(id){
-        this.id = id;
-        this.questionService.getAskDetail(id).subscribe(
+        this.options.id = id;
+        const params: string = `?include=["question","answers","user"]`;
+        this.questionService.getQAResponceById(id, params).subscribe(
           (resp: any) => {
             console.log('resp', resp);
-            this.title = resp.rows[0].question.title;
-            this.description = resp.rows[0].question.description;
-            this.author = resp.rows[0].user.fullname;
-            this.date = resp.rows[0].createdAt;
-            this.answersObject = resp.rows[0].answers;
-            this.getAnswersForCurrentQuestion(this.answersObject)
+            if (resp && resp.data && resp.data.user && resp.data.question) {
+              this.options.title = resp.data.question.title;
+              this.options.description = resp.data.question.description;
+              this.options.author = resp.data.user.fullname;
+              this.options.date = resp.data.createdAt;
+              this.insertAnswersForCurrentQuestion(resp.data.answers);
+            }
           },
           (err: any) => {
             console.log('err', err);
@@ -50,22 +59,40 @@ export class QuestionDiscussComponent implements OnInit {
         )
       }
   }
-  public getAnswersForCurrentQuestion(answerArray){
+
+  /**
+   * Iterate trough answers and add only missing/new items to existing list
+   * @param answerArray
+   */
+  public insertAnswersForCurrentQuestion(answerArray: any[]){
     for(let i = 0; i < answerArray.length; i++) {
-      this.answers.push(answerArray[i])
+      if (this.options.answers.indexOf(answerArray[i]) === -1) {
+        this.options.answers.push(answerArray[i])
+      }
     }
+    this.scrollToBottom();
   }
+
   public sendAnswer() {
-    const thisId = this.id;
-    console.log(thisId);
-    if (this.questionService.newAnswer.description != '' && this.questionService.newAnswer.title !== '') {
-      this.questionService.createAnswerFOrCurrentQuestion(thisId);
-      this.answers = [];
-      this.loadQuestion(thisId);
+    const questionId: number = this.options.id;
+    if (this.questionService.newAnswer.description !== '' && this.questionService.newAnswer.title !== '') {
+      this.questionService.createAnswerForCurrentQuestion(questionId).subscribe(
+        (resp: any) => {
+          console.log('resp', resp);
+          this.questionService.newAnswer.description = '';
+          this.questionService.newAnswer.title = '';
+          this.loadQuestion(questionId);
+        },
+        (err: any) => { console.log('err: ', err); }
+      );
     } else {
       return console.log('error')
     }
   }
 
-
+  public scrollToBottom(): void {
+    try {
+      this.scrolledContainer.nativeElement.scrollTop = this.scrolledContainer.nativeElement.scrollHeight;
+    } catch(err) { }
+  }
 }

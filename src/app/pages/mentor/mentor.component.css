@@ -15,12 +15,25 @@ table * {
   top: 27%;
   left: calc(50% - 395px);
   border-radius: 8px;
-  background: url(https://previews.123rf.com/images/loskutnikov/loskutnikov1106/loskutnikov110600045/9719891-old-wooden-board-background.jpg);
+  background: url(https://cdn1.savepice.ru/uploads/2018/7/30/afd08dd7cf94edf70886a26297a8f5ca-full.jpg);
   border: 6px solid #8c5517;
-  box-shadow: 0px 50px 80px 20px rgba(0,0,0,.7);
+  box-shadow: 0 50px 80px 20px rgba(0,0,0,.7);
   padding: 10px;
 }
-thead{
+.mentor-dashboard th {
+  color: orange;
+}
+.mentor-dashboard td, .mentor-dashboard a {
+  color: white;
+  font-style: italic;
+}
+.mentor-dashboard a {
+  background: #8c5517;
+  border-radius: 4px;
+  border: 1px solid #a2a2a2;
+  padding: 4px;
+}
+thead {
   font-size: 25px;
 }
 .question{

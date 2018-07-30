@@ -8,12 +8,14 @@ import {Router} from '@angular/router';
 @Injectable()
 
 export class AuthService {
-  public logged = false;
+  // public logged = false;
   public user: IAuthData = {email: '', password: ''};
+
   constructor(
     private api: ApiService,
     private router: Router
   ) {}
+
   // Authenticate function
   public authenticate(data: IAuthData): Observable <any> {
     console.log('data', data);

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from "../../../services/userservice";
 import {Router} from "@angular/router";
+import {QuestionAnswerService} from "../../../services/question-answer";
 
 @Component({
   selector: 'app-mentor',
@@ -11,7 +11,7 @@ export class MentorComponent implements OnInit {
   public urlParams = '';
   public questionBoard: any[] = [];
   constructor(
-    public userService: UserService,
+    public questionAnswerService: QuestionAnswerService,
     public router: Router
   ) { }
 
@@ -20,8 +20,9 @@ export class MentorComponent implements OnInit {
   }
   public questionFunc() {
     this.urlParams = `?page=1&limit=8&order={"createdAt":-1}&where={"status":"enabled"}`;
-    this.userService.getQAResponce(this.urlParams).subscribe(
+    this.questionAnswerService.getQAResponce(this.urlParams).subscribe(
       (resp: any) => {
+        console.log('resp 2', resp);
         for (let i = 0; i < resp.rows.length; i++) {
           if ((resp.rows[i].status === 'enabled')) {
             const questionLine = {
