@@ -18,6 +18,10 @@ export class MentorComponent implements OnInit {
   ngOnInit() {
     this.questionFunc()
   }
+
+  /**
+   * load list of questionss with status "Enabled" to question board
+   */
   public questionFunc() {
     this.urlParams = `?page=1&limit=8&order={"createdAt":-1}&where={"status":"enabled"}`;
     this.questionAnswerService.getQAResponce(this.urlParams).subscribe(
@@ -43,6 +47,7 @@ export class MentorComponent implements OnInit {
       }
     );
   }
+
   public goToDetails(id) {
     this.router.navigate(['home', 'discuss', id]);
   }

@@ -25,7 +25,8 @@ import { MentorComponent } from './pages/mentor/mentor.component';
 import { QuestionanswerDialogComponent } from './components/questionanswer-dialog/';
 import { QuestionAnswerService } from '../services/question-answer';
 import { QuestionDiscussComponent } from './pages/question-discuss/question-discuss.component';
-import { ChatComponentComponent } from './components/chat-component/chat-component.component';
+import { ChatComponentComponent } from './components/chat-component/';
+import { ConversationpageComponent } from './pages/conversationpage/conversationpage.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { ChatComponentComponent } from './components/chat-component/chat-compone
     QuestionanswerDialogComponent,
     QuestionDiscussComponent,
     ChatComponentComponent,
+    ConversationpageComponent,
 
   ],
   imports: [

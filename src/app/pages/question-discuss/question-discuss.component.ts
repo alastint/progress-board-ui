@@ -38,6 +38,10 @@ export class QuestionDiscussComponent implements OnInit, AfterViewChecked {
     this.scrollToBottom();
   }
 
+  /**
+   * Loading details of question by id
+   * @param {number} id
+   */
   public loadQuestion(id: number) {
       if(id){
         this.options.id = id;
@@ -73,6 +77,9 @@ export class QuestionDiscussComponent implements OnInit, AfterViewChecked {
     this.scrollToBottom();
   }
 
+  /**
+   * give answer for current question
+   */
   public sendAnswer() {
     const questionId: number = this.options.id;
     if (this.questionService.newAnswer.description !== '' && this.questionService.newAnswer.title !== '') {
@@ -90,6 +97,9 @@ export class QuestionDiscussComponent implements OnInit, AfterViewChecked {
     }
   }
 
+  /**
+   * trying to scroll div to bottom
+   */
   public scrollToBottom(): void {
     try {
       this.scrolledContainer.nativeElement.scrollTop = this.scrolledContainer.nativeElement.scrollHeight;

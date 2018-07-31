@@ -39,7 +39,7 @@ export class MessageService {
    * @param text
    * @returns {Observable<HttpEvent<any>>}
    */
-  public postMessage(userId: number, text: string) {
+  public postMessage(text: any, userId: any) {
     return this.api.post(`${this.messagePath}`, {text: text, userId: userId});
   }
 
@@ -50,7 +50,7 @@ export class MessageService {
    * @param {string} status
    * @returns {Observable<HttpEvent<any>>}
    */
-  public postNews(userId: any, text: any, status: string) {
+  public postNews(text: any, userId: any, status: string) {
     return this.api.post(`${this.messagePath}`, {text: text, userId: userId, status: status});
   }
 }

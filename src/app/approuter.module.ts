@@ -11,6 +11,7 @@ import { AdminsideComponent } from './pages/adminside/adminside.component';
 import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { MentorComponent } from "./pages/mentor/mentor.component";
 import { QuestionDiscussComponent } from "./pages/question-discuss/question-discuss.component";
+import {ConversationpageComponent} from "./pages/conversationpage/conversationpage.component";
 
 
 
@@ -24,6 +25,7 @@ const appRoutes: Routes = [
       { path: 'progress', component: ProgressComponent },
       { path: 'mentor', component: MentorComponent },
       { path: 'discuss/:id', component: QuestionDiscussComponent },
+      { path: 'conversations', component: ConversationpageComponent },
     ],
     canActivate: [ AuthGuardService ]
   },

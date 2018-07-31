@@ -15,8 +15,9 @@
     </ul>
   </div>
   <div class="ask-answer">
-    <input type="text" [(ngModel)]="questionService.newAnswer.title">
-    <textarea cols="140" rows="5"[(ngModel)]="questionService.newAnswer.description"></textarea>
+    <input type="text" [(ngModel)]="questionService.newAnswer.title" placeholder="Message Title...">
+    <textarea cols="140" rows="5"[(ngModel)]="questionService.newAnswer.description" placeholder="Message...">
+    </textarea>
     <button (click)="sendAnswer()">Send</button>
   </div>
 </div>

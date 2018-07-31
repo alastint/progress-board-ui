@@ -12,10 +12,15 @@ a{
   color: white;
   text-decoration: none;
 }
+a:hover, button:hover{
+  cursor: pointer;
+}
 .background{
   background: url("http://i.piccy.info/i9/73a11ee011254f699c2c5059da1944ac/1532451061/693337/1259664/background_2011768_1920.jpg");
   height: 100%;
   background-size: 100%;
+  max-width: 2500px;
+  margin: 0 auto;
 }
 .absolute-support{
   position: absolute;
@@ -23,7 +28,9 @@ a{
   top: 40px;
   font-size: 40px;
 }
-/*********************header***************/
+/***************************************
+                Header
+***************************************/
 .container-home-header{
   padding: 8px 0;
   background: #0f1922;
@@ -54,7 +61,9 @@ a{
   font-weight: bold;
 }
 
-/*****************conteiner***************/
+/****************************************
+              Container
+*****************************************/
 .container-content-part{
   width: 80.2%;
   float: left;
@@ -72,7 +81,9 @@ a{
   float: right;
 }
 
-/*bar*/
+/**************************************
+            Aside bar
+***************************************/
 .container-navigation-and-chat-bar p {
   text-align: center;
   margin-bottom: 3px;

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MessageService} from "../../../services/messageservice";
 import {ApiService} from "../../../services/api";
 
@@ -9,16 +9,20 @@ import {ApiService} from "../../../services/api";
 })
 export class ChatComponentComponent {
   public urlParams = '';
-  public urlParamsNews = '';
-  public chat: any = { message: '', newsMessage: ''};
+  public chat: any = { message: ''};
   public chatMessages: any[] = [];
-  public newsBlock: any[] = [];
   private authorId = 0;
+  @Input() options: any = { };
+  @Output() doConfirm: any = new EventEmitter();
 
   constructor(
     public messageService: MessageService,
     public api: ApiService
   ) { }
+
+  ngOnInit(){
+    this.loadChat();
+  }
 
   /**
    * load chat history
@@ -32,15 +36,15 @@ export class ChatComponentComponent {
         console.log('responseLoad', responseLoad);
         for (let i = responseLoad.rows.length - 1; i >= 0; i--) {
           this.authorId = appUser.id === responseLoad.rows[i].userId ? 1 : 2;
-          if (!(responseLoad.rows[i].status === '[NEWS]')) {
+          if (!(responseLoad.rows[i].status == '[NEWS]')) {
             console.log(i);
             const historyMessage = {
               text: responseLoad.rows[i].text,
               align: (this.authorId % 2 || this.authorId === 0) ? 1 : 2,
               timestamp: responseLoad.rows[i].createdAt
             };
-            console.log('historyMessage', historyMessage);
             this.chatMessages.push(historyMessage);
+            console.log('historyMessage', historyMessage, 'this.chatMessages', this.chatMessages);
           }
         }
       },
@@ -50,6 +54,9 @@ export class ChatComponentComponent {
     );
   }
 
+  /**
+   * checking does message is empty, if not push it to backend
+   */
   public sendChatMessage() {
     if (this.chat.message) {
       this.sendMessage(this.chat.message);
@@ -71,7 +78,8 @@ export class ChatComponentComponent {
     };
     console.log('appUser.id',message.text, appUser.id);
     this.chatMessages.push(message);
-    this.api.post(`/message`, {text: message.text, userId: appUser.id}).subscribe(
+    // this.api.post(`/message`, {text: message.text, userId: appUser.id})
+    this.messageService.postMessage(message.text, appUser.id).subscribe(
       (resp: any) => {
         console.log('resp', resp);
       },
@@ -81,55 +89,4 @@ export class ChatComponentComponent {
     );
     this.chat.message = '';
   }
-
-
-
-  /**
-   * load last news
-   */
-  public newsBlockfunc() {
-    this.urlParamsNews = `?page=1&limit=2&order={"createdAt":-1}&where={"status":"[NEWS]"}`;
-    this.messageService.getMessage(this.urlParamsNews).subscribe(
-      (responseLoad: any) => {
-        for (let i = 0; i < responseLoad.rows.length; i++) {
-          if ((responseLoad.rows[i].status === '[NEWS]')) {
-            const newsMessage = {
-              text: responseLoad.rows[i].text,
-              timestamp: responseLoad.rows[i].createdAt
-            };
-            this.newsBlock.push(newsMessage);
-          }
-        }
-      },
-      (err) => {
-        console.log (err);
-      }
-    );
-  }
-
-  /**
-   * send news to the server
-   * @param {string} text
-   */
-  public sendNews(text: string) {
-    const appUser: any = this.messageService.getUserData();
-    const newsMessage: any = {
-      text,
-      timestamp: new Date().toISOString()
-    };
-    this.newsBlock.push(newsMessage);
-    // this.messageService.postNews(newsMessage.text, appUser.id, '[NEWS]' )
-    this.api.post(`/message`, {text: newsMessage.text, userId: appUser.id, status: '[NEWS]' }).subscribe(
-      (resp) => {
-        console.log('resp', resp)
-      },
-      (err) => {
-        console.log('err', err)
-      }
-    );
-    this.newsBlock = [];
-    this.chat.newsMessage = '';
-    this.newsBlockfunc();
-  }
-
 }

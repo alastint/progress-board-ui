@@ -10,6 +10,9 @@ table * {
   font-size: 18px;
   padding: 5px 0 5px 0;
 }
+a:hover, button:hover{
+  cursor: pointer;
+}
 .mentor-dashboard{
   position: absolute;
   top: 27%;

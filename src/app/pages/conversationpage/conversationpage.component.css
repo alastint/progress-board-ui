@@ -1,0 +1,70 @@
+a:hover, button:hover{
+  cursor: pointer;
+}
+.conversation-container{
+  height: 100%;
+  width: calc(100% - 60px);
+  margin: 15px;
+  padding: 15px 0 15px 15px;
+  border: 1px solid black;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, .6);
+  color: black;
+  display: inline-block;
+}
+.show-conversations-list{
+  border: 1px solid black;
+  width: 23.56%;
+  float: left;
+  margin-right: 0.5%;
+  padding: 2px 5px;
+  height: calc(100vh - 110px);
+  border-radius: 4px;
+}
+.show-current-conversation{
+  width: 72.5%;
+  border: 1px solid black;
+  float: left;
+  padding: 0 5px;
+  border-radius: 4px;
+}
+.button-conversation{
+  width: calc(100% - 13px);
+  height: 50px;
+  padding: 10px 5px;
+  border: 1px solid skyblue;
+  margin: 3px 1px;
+}
+.show-conversations-list :hover{
+  background: #03A9F4;
+  cursor: pointer;
+}
+.button-name{
+  display: block;
+  margin-bottom: 3px;
+  font-weight: bold;
+}
+.show-current-conversation{
+  height: 100%;
+}
+textarea {
+  width: 746px;
+  border-radius: 4px;
+}
+.conversation-input{
+  display: inline-flex;
+  margin: 0 0 10px 0px;
+  padding: 5px;
+  border-radius: 4px;
+}
+.show-current-conversation-container{
+  height: 660px;
+  overflow-y: auto;
+  border: 1px solid grey;
+  border-collapse: collapse;
+  margin: 10px 10px 0 10px;
+  border-radius: 4px;
+}
+.button-conversation{
+  overflow-x: hidden;
+}
