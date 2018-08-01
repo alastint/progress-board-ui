@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { UnknownpageComponent } from './pages/unknownpage/unknownpage.component';
 import { ManageuserComponent } from './pages/manageuser/manageuser.component';
-import { AuthGuardService } from '../services/authguard';
+import {AuthAdminGuardService, AuthGuardService} from '../services/authguard';
 import { LandpageComponent } from './pages/landpage/landpage.component';
 import { ProgressComponent } from './pages/progress/progress.component';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
@@ -12,6 +12,7 @@ import { DashboardComponent } from "./pages/dashboard/dashboard.component";
 import { MentorComponent } from "./pages/mentor/mentor.component";
 import { QuestionDiscussComponent } from "./pages/question-discuss/question-discuss.component";
 import {ConversationpageComponent} from "./pages/conversationpage/conversationpage.component";
+import {UserListComponent} from "./pages/user-list/user-list.component";
 
 
 
@@ -32,9 +33,10 @@ const appRoutes: Routes = [
 
   { path: 'admin', component: AdminsideComponent,
     children: [
+      {path: 'userlist', component: UserListComponent },
       {path: 'manageuser/:id', component: ManageuserComponent },
     ],
-    canActivate: [ AuthGuardService ]
+    canActivate: [ AuthAdminGuardService ]
   },
   { path: '**', component: UnknownpageComponent }
 ];

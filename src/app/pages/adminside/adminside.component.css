@@ -12,14 +12,21 @@ li{
 a, span{
   font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
-
+a:hover, button:hover{
+  cursor: pointer;
+}
+.admin-page-container{
+  background: url(http://littleprofessors.co.za/wp-content/uploads/2016/11/Kids-club-background-09.jpg);
+  background-size: 100%;
+  height: 100%;
+}
 /********************************************************
                       Header
 *********************************************************/
 header{
   width: 100%;
   height: 50px;
-  background: steelblue;
+  background: rgba(70, 130, 180, 0.6);
   display: block;
 }
 
@@ -35,7 +42,7 @@ img{
   text-align: center;
   font-size: 145%;
   font-weight: bold;
-  background: #367fa9;
+  background: rgba(54, 127, 169, .4);
   float: left;
 }
 .logo-header a{
@@ -72,9 +79,8 @@ aside, body, html{
   height: 100%;
 }
 .sidebar{
-  background: #222d32;
-  /*min-height: calc(100% - 50px);*/
-  min-height: calc(897px);
+  background: rgba(34, 45, 50, .8);
+  height: calc(100% - 50px);
   width: 230px;
   overflow: hidden;
   font-size: 14px;

@@ -1,8 +1,7 @@
-import {Component, EventEmitter, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from '../../../services/authservice';
 import {MessageService} from '../../../services/messageservice';
 import {QuestionAnswerService} from "../../../services/question-answer";
-import {ChatComponentComponent} from "../../components/chat-component/chat-component.component";
 import {ApiService} from "../../../services/api";
 
 @Component({
@@ -11,7 +10,6 @@ import {ApiService} from "../../../services/api";
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent  implements OnInit, OnDestroy{
-  // public chatApp: EventEmitter = new EventEmitter();
   public appUser = this.messageService.getUserData();
   public title = '';
   public description = '';
@@ -28,7 +26,6 @@ export class HomepageComponent  implements OnInit, OnDestroy{
     public authservice: AuthService,
     public messageService: MessageService,
     public questionanswer: QuestionAnswerService,
-    public chatComponent: ChatComponentComponent,
     public api: ApiService
   ) { }
 

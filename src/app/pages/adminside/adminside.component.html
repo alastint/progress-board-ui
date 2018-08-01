@@ -18,7 +18,7 @@
           <div class="dropdown-content">
             <a href="#">Link 1</a>
             <a href="#">Link 2</a>
-            <a>Log Out</a>
+            <a (click)="quit()">Log Out</a>
           </div>
         </div>
       </div>
@@ -33,7 +33,7 @@
     <div class="user-panel">
       <img src="http://cactusthemes.com/blog/wp-content/uploads/2018/01/tt_avatar_small.jpg" class="avatar-img">
       <span>
-        <i>Jack Sparrow</i>
+        <i>{{ options.adminName }}</i>
         <a href="#">
           <i class="fa fa-circle text-success"></i>
           <a class="text-a">Online</a>
@@ -50,6 +50,19 @@
       </div>
     </form>
     <!--End of Search form-->
+
+    <!--Navigation List-->
+    <ul class="sidebar-nav-ul">
+      <li class="head-li">Main Navigation</li>
+      <li *ngFor="let menuItem of menuItems">
+        <span class="showed" (click)="menuClicked(menuItem)"><span><i class="{{menuItem.icon}}"></i>{{menuItem.title}}</span></span>
+        <ul [ngStyle]="{'height': menuItem.opened ? 30 * menuItem.innerItems.length + 'px' : 0}" class="menu-children-container">
+          <li *ngFor="let listChildren of menuItem.innerItems" (click)="menuChildClicked(listChildren)">
+            <a>{{listChildren.title}}</a></li>
+        </ul>
+      </li>
+    </ul>
+    <!--End of Navigation List-->
   </aside>
   <!--End of nav SideBar-->
 

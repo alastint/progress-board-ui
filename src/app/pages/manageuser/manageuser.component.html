@@ -1,3 +1,65 @@
-<p>
-  manageuser works!
-</p>
+<!--Menu of Create/Change of Users-->
+<div id="changes">
+  <ul>
+    <li><h3>First Name</h3>
+      <input type="text" name="firstName" [(ngModel)]="user.firstName" (keyup)="onChange()">
+    </li>
+
+    <li>
+      <h3>Last Name</h3>
+      <input type="text" name="lastName" [(ngModel)]="user.lastName" (keyup)="onChange()">
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <h3>Email</h3>
+      <input [disabled]="!options.isNew" type="email" name="email" [(ngModel)]="user.email" (keyup)="onChange()">
+    </li>
+    <li>
+      <h3>Country</h3>
+      <input type="text" name="lastName" [(ngModel)]="user.country" (keyup)="onChange()">
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <h3>Phone number</h3>
+      <input type="text" name="lastName" [(ngModel)]="user.phoneNumber1" (keyup)="onChange()">
+    </li>
+    <li>
+      <h3>Reserve phone number</h3>
+      <input type="text" name="phoneNumber2" [(ngModel)]="user.phoneNumber2" (keyup)="onChange()">
+    </li>
+  </ul>
+
+  <ul>
+    <li *ngIf="options.isNew">
+      <h3>Password</h3>
+      <input type="password" name="password" [(ngModel)]="user.password" (keyup)="onChange()">
+    </li>
+    <li *ngIf="options.isNew">
+      <h3>Confirm Password</h3>
+      <input type="password" name="passwordConfirm" [(ngModel)]="options.passwordConfirm" (keyup)="onChange()">
+      <div *ngIf="user.password && options.passwordConfirm && (user.password !== options.passwordConfirm)">Password and confirm password don't match!</div>
+    </li>
+  </ul>
+
+  <ul>
+    <li>
+      <h3>Company</h3>
+      <input type="text" name="companyName" [(ngModel)]="user.companyName" (keyup)="onChange()">
+    </li>
+    <li>
+      <h3>Gender</h3>
+      <input type="text" name="gender" [(ngModel)]="user.gender" (keyup)="onChange()">
+    </li>
+  </ul>
+   <div class="about-with-buttons">
+     <h3>About me</h3>
+     <textarea [(ngModel)]="user.description" (keyup)="onChange()"></textarea>
+     <button id="backMenu" (click)="goBack()">Back</button>
+     <button *ngIf="options.changed" [disabled]="!user.email || (options.isNew && !user.password)" id="saveNpush" (click)="trySave(user)">{{options.isNew ? 'Create' : 'Update'}}</button>
+     <button *ngIf="!options.isNew" id="deleteUser" (click)="deleteUserData(user.id)">Delete</button>
+   </div>
+</div>

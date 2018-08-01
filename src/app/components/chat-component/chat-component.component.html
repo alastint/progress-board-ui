@@ -1,7 +1,7 @@
 <div class="chat">
   <!--chat history container-->
   <div class="chat-messages-container">
-    <div class="chat-message-block" *ngFor="let message of chatMessages" [ngClass]="(message.author == 'Me') ? 'pull-right' : 'pull-left'">
+    <div class="chat-message-block" *ngFor="let message of chatMessages" [ngClass]="(message.author == 'Me ') ? 'pull-right' : 'pull-left'">
       <div class="chat-message-author">{{message.author + message.timestamp}}</div>
       <div class="chat-message-text">{{message.text}}</div>
     </div>

@@ -15,7 +15,7 @@
       <li><a href="/">Progress</a></li>
       <li><a href="/">Tasks</a></li>
       <li><a href="home/mentor">Mentors Side</a></li>
-      <li><a href="admin">Admin Side</a></li> <!--if user admin-->
+      <li *ngIf="appUser.role === 'super'"><a href="admin">Admin Side</a></li> <!--if user admin-->
     </ul>
     <ul class="right-header-ul">
       <li><a>Score: 713</a></li>

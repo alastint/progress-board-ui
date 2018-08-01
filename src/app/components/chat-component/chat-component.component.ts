@@ -39,7 +39,7 @@ export class ChatComponentComponent {
           if (!(responseLoad.rows[i].status == '[NEWS]')) {
             console.log('appUser.id === responseLoad.rows[i].userId', appUser.id === responseLoad.rows[i].userId);
             const historyMessage = {
-              author: (appUser.id === responseLoad.rows[i].userId) ? 'Me' : 'Interlocutor',
+              author: (appUser.id === responseLoad.rows[i].userId) ? 'Me ' : 'Interlocutor ',
               text: responseLoad.rows[i].text,
               timestamp: responseLoad.rows[i].createdAt
             };

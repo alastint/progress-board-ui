@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { UserService } from '../services/userservice';
 import { UnknownpageComponent } from './pages/unknownpage/unknownpage.component';
 import { ManageuserComponent } from './pages/manageuser/manageuser.component';
-import { AuthGuardService} from '../services/authguard';
+import {AuthAdminGuardService, AuthGuardService} from '../services/authguard';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
@@ -27,6 +27,7 @@ import { QuestionAnswerService } from '../services/question-answer';
 import { QuestionDiscussComponent } from './pages/question-discuss/question-discuss.component';
 import { ChatComponentComponent } from './components/chat-component/';
 import { ConversationpageComponent } from './pages/conversationpage/conversationpage.component';
+import { UserListComponent } from './pages/user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { ConversationpageComponent } from './pages/conversationpage/conversation
     QuestionDiscussComponent,
     ChatComponentComponent,
     ConversationpageComponent,
-
+    UserListComponent,
   ],
   imports: [
     Angular2FontawesomeModule,
@@ -64,7 +65,7 @@ import { ConversationpageComponent } from './pages/conversationpage/conversation
     AuthGuardService,
     MessageService,
     QuestionAnswerService,
-    ChatComponentComponent
+    AuthAdminGuardService
   ],
   bootstrap: [AppComponent]
 })
