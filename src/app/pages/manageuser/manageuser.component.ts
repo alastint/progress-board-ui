@@ -20,7 +20,7 @@ export class ManageuserComponent implements OnInit {
     public router: Router,
     public userService: UserService
   ) { }
-  // Calling user datails function
+
   public ngOnInit() {
     console.log('ngOnInit this.route', this.route);
     this.route.params.subscribe((param: any) => {
@@ -29,7 +29,11 @@ export class ManageuserComponent implements OnInit {
       }
     });
   }
-  // request User by id from server
+
+  /**
+   * request User by id from server
+   * @param id
+   */
   public requestUser(id: any) {
     if (id) {
       this.userService.getUserById(id).subscribe(
@@ -47,11 +51,18 @@ export class ManageuserComponent implements OnInit {
       );
     }
   }
-  // route to admin dashboard
+
+  /**
+   * route to admin userlist
+   */
   public goBack() {
     this.router.navigate(['admin', 'userlist']);
   }
-  // Delete user data from backend
+
+  /**
+   * Delete user data from backend
+   * @param id
+   */
   public deleteUserData(id) {
     this.userService.deleteUser(id).subscribe(
       (resp: any) => {
@@ -62,7 +73,11 @@ export class ManageuserComponent implements OnInit {
       }
     );
   }
-  // Function try to save changes or create user to backend
+
+  /**
+   * Function try to save changes or create user to backend
+   * @param user
+   */
   public trySave(user: any) {
     if (user && user.id) {
       const changedUserData: any = this.getChanged(this.userUnchanged, this.user);
@@ -87,12 +102,22 @@ export class ManageuserComponent implements OnInit {
       );
     }
   }
-  // Function what create array with differense of unchanged data and changed
+
+  /**
+   * Function what create array with difference of unchanged data and changed
+   */
   public onChange() {
     this.options.changed = !this.areEqual(this.user, this.userUnchanged);
     const changedObj: any = this.getChanged(this.userUnchanged, this.user);
     console.log('changedObj', changedObj);
   }
+
+  /**
+   * Checking did some field changed and add it to send for update
+   * @param unchanged
+   * @param changed
+   * @returns {any}
+   */
   private getChanged(unchanged: any, changed: any) {
     const diff: any = {};
     for (const prop in unchanged) {

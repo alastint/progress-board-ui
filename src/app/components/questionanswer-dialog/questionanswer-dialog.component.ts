@@ -12,8 +12,6 @@ export class QuestionanswerDialogComponent implements OnInit {
   public passwordConfirm = {};
   @Input() options: any = {
     answerOpen: false,
-    send: false,
-    cancel: false,
   };
   @Input() targetItem: any = {};
   @Output() doConfirm: any = new EventEmitter();

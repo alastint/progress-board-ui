@@ -48,6 +48,10 @@ export class MentorComponent implements OnInit {
     );
   }
 
+  /**
+   * Redirect to  discuss question by id
+   * @param id
+   */
   public goToDetails(id) {
     this.router.navigate(['home', 'discuss', id]);
   }

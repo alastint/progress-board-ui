@@ -46,13 +46,21 @@ export class HomepageComponent  implements OnInit, OnDestroy{
     this.newsInputOpen = !this.newsInputOpen;
   }
 
+  /**
+   *Calling deleting user data from local storage function
+   */
   public quit() {
     this.authservice.logOutFunk();
   }
 
+  /**
+   * Checking did user write message, if not return message
+   */
   public sendNewsFunc() {
     if (this.newsText) {
       this.sendNews(this.newsText);
+    } else {
+      console.log('nothing to send!')
     }
   }
 

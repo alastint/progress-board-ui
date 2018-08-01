@@ -10,10 +10,12 @@
   width: 100vw;
   z-index: 990;
 }
+
 .dialog-answer-overlay-active {
   background-color: rgba(0,0,0,.6);
 
 }
+
 .dialog-answer-container {
   background-color: #fff;
   border-radius: 6px;
@@ -30,27 +32,28 @@
   width: 440px;
   z-index: 991;
 }
+
 .dialog-answer-container input{
   width: 438px;
   margin-bottom: 15px;
 }
+
 .dialog-answer-container textarea{
   overflow-y: auto;
 }
+
 .dialog-answer-container-active {
   top: calc(50vh - 110px);
 }
+
 .dialog-answer-message {
   font-size: 14px;
   margin: 0 auto;
   text-align: center;
   min-height: 60px;
 }
-.dialog-answer-actions {
-  text-align: center;
-  width: 100%;
-}
-.dialog-answer-actions button {
+
+button {
   border-radius: 6px;
   border: none;
   display: inline-block;

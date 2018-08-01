@@ -25,7 +25,7 @@ export class RegistrationDialogComponent implements OnInit {
 
   constructor(
     public router: Router,
-    public _user: UserService,
+    public userService: UserService,
   ) { }
 
   public ngOnInit() {
@@ -45,9 +45,13 @@ export class RegistrationDialogComponent implements OnInit {
       }
     }, 200);
   }
-// Function try to save changes or create user to backend
+
+  /**
+   * Function try to save changes or create user to backend
+   * @param user
+   */
   public trySave(user: any) {
-      this._user.signUp(user).subscribe(
+      this.userService.signUp(user).subscribe(
         (resp: any) => {
           if (resp && resp.data && resp.data.authToken) {
             localStorage. setItem('currentUser', JSON.stringify(resp.data));

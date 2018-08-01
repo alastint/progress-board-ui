@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {AfterViewChecked, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {MessageService} from "../../../services/messageservice";
 import {ApiService} from "../../../services/api";
 
@@ -7,7 +7,8 @@ import {ApiService} from "../../../services/api";
   templateUrl: './chat-component.component.html',
   styleUrls: ['./chat-component.component.css']
 })
-export class ChatComponentComponent {
+export class ChatComponentComponent implements  OnInit, AfterViewChecked{
+  @ViewChild('chatMessagesContainer') public scrolledChat: ElementRef;
   public urlParams = '';
   public chat: any = { message: ''};
   public chatMessages: any[] = [];
@@ -22,6 +23,10 @@ export class ChatComponentComponent {
 
   ngOnInit(){
     this.loadChat();
+  }
+
+  public ngAfterViewChecked() {
+    this.scrollChat();
   }
 
   /**
@@ -47,6 +52,7 @@ export class ChatComponentComponent {
             console.log('historyMessage', historyMessage, 'this.chatMessages', this.chatMessages);
           }
         }
+        this.scrollChat();
       },
       (err) => {
         console.log (err);
@@ -60,6 +66,7 @@ export class ChatComponentComponent {
   public sendChatMessage() {
     if (this.chat.message) {
       this.sendMessage(this.chat.message);
+      this.scrollChat();
     }
   }
 
@@ -71,7 +78,7 @@ export class ChatComponentComponent {
     const appUser: any = this.messageService.getUserData();
     const message: any = {
       text: this.chat.message,
-      author: appUser.fullname + ' ',
+      author: 'Me ',
       timestamp: new Date().toISOString()
     };
     console.log('appUser.id',message.text, appUser.id);
@@ -85,5 +92,14 @@ export class ChatComponentComponent {
       }
     );
     this.chat.message = '';
+  }
+
+  /**
+   * trying to scroll div to bottom
+   */
+  public scrollChat(): void {
+    try {
+      this.scrolledChat.nativeElement.scrollTop = this.scrolledChat.nativeElement.scrollHeight;
+    } catch(err) { }
   }
 }
