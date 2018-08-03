@@ -13,6 +13,7 @@ import { MentorComponent } from "./pages/mentor/mentor.component";
 import { QuestionDiscussComponent } from "./pages/question-discuss/question-discuss.component";
 import {ConversationpageComponent} from "./pages/conversationpage/conversationpage.component";
 import {UserListComponent} from "./pages/user-list/user-list.component";
+import {PortfolioComponent} from "./pages/portfolio/portfolio.component";
 
 
 
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
   { path: 'home', component: HomepageComponent,
     children: [
       { path: '', component: DashboardComponent  },
+      { path: 'portfolio', component: PortfolioComponent  },
       { path: 'progress', component: ProgressComponent },
       { path: 'mentor', component: MentorComponent },
       { path: 'discuss/:id', component: QuestionDiscussComponent },

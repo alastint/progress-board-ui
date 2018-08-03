@@ -28,6 +28,7 @@ import { QuestionDiscussComponent } from './pages/question-discuss/question-disc
 import { ChatComponentComponent } from './components/chat-component/';
 import { ConversationpageComponent } from './pages/conversationpage/conversationpage.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
+import { PortfolioComponent } from './pages/portfolio/portfolio.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { UserListComponent } from './pages/user-list/user-list.component';
     ChatComponentComponent,
     ConversationpageComponent,
     UserListComponent,
+    PortfolioComponent,
   ],
   imports: [
     Angular2FontawesomeModule,

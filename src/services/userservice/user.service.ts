@@ -57,4 +57,11 @@ export class UserService {
   public deleteUser(id: number) {
     return this.api.delete(`${this.path}/${id}`);
   }
+
+  public getUserData() {
+    // Retrieve data by key from local storage
+    const userString: string = localStorage.getItem('currentUser');
+    // Return user object if data in local storage exist, or empty object if no user data available
+    return typeof userString === 'string' ? JSON.parse(userString) : {};
+  }
 }

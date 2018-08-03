@@ -1,0 +1,116 @@
+.portfolio-container{
+  width: 800px;
+  padding: 0;
+  z-index: 1;
+  margin: 0 auto;
+}
+.home-portfolio{
+  margin-top: 50px;
+  box-shadow: 0 13px 50px;
+  border-radius: 7px;
+  background: rgba(255,255,255,.1);
+}
+.title-block{
+  margin-top: 40px;
+  font-size: 30px;
+}
+.home-portfolio-header{
+  position: relative;
+  background-color: #2196F3;
+  padding: 50px;
+  margin-bottom: 25px;
+  background-size: cover;
+  -webkit-background-size: cover;
+  background-attachment: scroll;
+  background-position: center center;
+  background-repeat: no-repeat;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  min-height: 160px;
+}
+.row {
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.avatar{
+  width: 250px;
+  height: 230px;
+  border: 2px solid white;
+  margin-bottom: -95px;
+  float: left;
+}
+.col-lg-8{
+  text-align: center;
+  float: right;
+  width: 58.666667%;
+}
+.title-list{
+  display: inline-block;
+  min-width: 135px;
+  font-weight: bold;
+}
+.value-list{
+  display: inline-block;
+}
+.clear{
+  clear: both;
+  width: 100%;
+}
+.col-sm-6{
+  padding: 10px;
+  margin-left: 32%;
+}
+.col-sm-6 ul{
+  padding: 0;
+}
+.col-sm-6 ul li{
+  list-style: none;
+  font-size: 14px;
+  padding: 2px;
+}
+section{
+  display: none;
+}
+.portfolio-active {
+  display: block;
+}
+#settings-portfolio{
+  width: 720px;
+  padding: 0;
+  z-index: 1;
+  margin: 50px auto;
+  border-radius: 6px;
+  background: rgba(255,255,255,.1);
+}
+#settings-portfolio ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 20px;
+  display: flex;
+}
+#settings-portfolio ul li{
+  padding: 0 5px;
+}
+#settings-portfolio input{
+  height: 30px;
+  width: 300px;
+  padding-left: 8px;
+  border-radius: 4px;
+  border: none;
+  margin: 0 10px;
+}
+#settings-portfolio button{
+  margin: 57px 20px 30px 40px;
+  height: 40px;
+  width: 75px;
+  font-size: 110%;
+  font-style: italic;
+  color: black;
+  border-radius: 4px;
+}
+.absolute-edit-btn{
+  font-size: 40px;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
