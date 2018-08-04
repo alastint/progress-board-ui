@@ -1,43 +1,35 @@
+<app-questionanswer-dialog
+  *ngIf="answerOpen"
+  [options]="{send: true, cancel: true, answerOpen: true}"
+  (doConfirm)="sendMessage()"
+  (doReject)="reject()"
+></app-questionanswer-dialog>
 <div class="background">
   <a class="absolute-support"><i class="fas fa-question-circle"></i></a>
+
+  <!--Header container-->
   <div class="container-home-header">
     <ul class="left-header-ul">
-      <li><a href="home/:id" class="big-name">Admin</a></li>
-      <li><a href="/">Home</a></li>
+      <li><a href="home" class="big-name">Admin</a></li>
+      <li><a href="home">Home</a></li>
       <li><a href="/">Progress</a></li>
       <li><a href="/">Tasks</a></li>
-      <li><a href="/">Mentors Side</a></li>
-      <li><a href="/">Admin Side</a></li> <!--if user admin-->
+      <li><a href="home/mentor">Mentors Side</a></li>
+      <li><a href="admin">Admin Side</a></li> <!--if user admin-->
     </ul>
     <ul class="right-header-ul">
       <li><a>Score: 713</a></li>
       <li><a>{{this.userEmail}}</a></li>
-      <li><a><i class="fas fa-envelope"> Messages</i></a></li>
+      <li><a href="home/conversations"><i class="fas fa-envelope"> Messages</i></a></li>
       <li (click)="quit()"><a><i class="fas fa-cogs"></i></a></li>
     </ul>
   </div>
+  <!--End of header container-->
+
+ <!--Container of page under header-->
   <div class="container-user-page">
     <div class="container-content-part">
-     <div class="progress-board-container">
-       <table>
-         <thead>
-         <tr>
-           <th class="poss-th">Position</th>
-           <th class="user-th">User</th>
-           <th class="score-th">Score</th>
-           <th class="rank-th">Rank</th>
-           <th class="private-th">PM</th>
-         </tr>
-         </thead>
-          <tr *ngFor=" let student of studentsScore">
-            <td class="poss-th">{{ student.position }}</td>
-            <td class="user-th">{{ student.email }}</td>
-            <td class="score-th">{{ student.score }}</td>
-            <td class="rank-th">{{ student.rank }}</td>
-            <td class="private-th"><button>write</button></td>
-          </tr>
-       </table>
-     </div>
+      <router-outlet></router-outlet>
     </div>
     <div class="container-navigation-and-chat-bar">
       <div class="mentor-online-display-container">
@@ -46,36 +38,25 @@
           <li><i class="fa fa-circle text-success"></i> <a>Harry</a></li>
           <li><i class="fa fa-circle text-success"></i> <a>Hermyona</a></li>
         </ul>
-        <a class="button-ask">Ask Mentor</a>
+        <a class="button-ask"  (click)="answerOpenFunc()">Ask Mentor</a>
       </div>
       <div class="news-block">
         <h3>News</h3>
         <ul>
-          <li *ngFor="let news of messageService.newsBlock">
+          <li *ngFor="let news of newsBlock">
             <i>{{ news.timestamp }}</i>
             <p>{{ news.text }}</p>
           </li>
         </ul>
         <a *ngIf="this.appUser && (this.appUser.role === 'admin' || this.appUser.role === 'super')" (click)="openInput()">New News</a>
         <div *ngIf="newsInputOpen" class="news-input">
-          <input type="text" [(ngModel)]="messageService.chat.newsMessage">
-          <button (click)="sendNewsFunc()" (click)="newsInputOpen = false">Add news</button>
+          <input type="text" [(ngModel)]="newsText">
+          <button (click)="sendNewsFunc(newsText)">Add news</button>
         </div>
       </div>
       <p>Chat</p>
-      <div class="chat">
-        <!--<textarea readonly></textarea>-->
-        <div class="chat-messages-container">
-          <div class="chat-message-block" *ngFor="let message of messageService.chatMessages" [ngClass]="(this.message.align % 2) ? 'pull-left' : 'pull-right'">
-            <div class="chat-message-author">{{message.author + message.timestamp}}</div>
-            <div class="chat-message-text">{{message.text}}</div>
-          </div>
-        </div>
-        <div class="chat-input-block">
-          <input type="text" class="chat-input" [(ngModel)]="messageService.chat.message">
-          <button type="button" (click)="sendChatMessage()">Send</button>
-        </div>
-      </div>
+      <app-chat-component></app-chat-component>
     </div>
   </div>
+ <!-- emd of Container of page under header-->
 </div>

@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import {ApiService} from '../api';
-import {HttpResponse} from '@angular/common/http';
 
 @Injectable()
 export class UserService {
 
   protected path = '/user';
-  protected message = '/message';
   protected pathSingUp = '/signup';
+
 
   constructor(
     public api: ApiService
@@ -30,9 +29,5 @@ export class UserService {
    */
   public signUp(user: any) {
     return this.api.post(`${this.pathSingUp}`, user);
-  }
-
-  public getMessage(params: string): Observable<HttpResponse<any>> {
-    return this.api.get(`${this.message}${params || ''}`);
   }
 }

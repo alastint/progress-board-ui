@@ -1,62 +1,139 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit} from '@angular/core';
 import {AuthService} from '../../../services/authservice';
 import {MessageService} from '../../../services/messageservice';
+import {QuestionAnswerService} from "../../../services/question-answer";
+import {ChatComponentComponent} from "../../components/chat-component/chat-component.component";
+import {ApiService} from "../../../services/api";
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.css']
 })
-export class HomepageComponent implements OnInit {
+export class HomepageComponent  implements OnInit, OnDestroy{
+  // public chatApp: EventEmitter = new EventEmitter();
   public appUser = this.messageService.getUserData();
-  public userEmail: '';
-  public adminUserId: boolean;
+  public title = '';
+  public description = '';
+  public question: any = { };
   public newsInputOpen = false;
-  public studentsScore: any[] =  [
-    { position: 1, email: 'some@email.com', score: 817, rank: 'Mentor', },
-    { position: 2, email: 'some@email.com', score: 717, rank: 'Mentor', },
-    { position: 3, email: 'some@email.com', score: 700, rank: 'Mentor', },
-    { position: 4, email: 'some@email.com', score: 562, rank: 'Mentor', },
-    { position: 5, email: 'some@email.com', score: 460, rank: 'Mentor', },
-    { position: 6, email: 'some@email.com', score: 400, rank: 'Mentor', },
-    { position: 7, email: 'some@email.com', score: 350, rank: 'Mentor', },
-    { position: 8, email: 'some@email.com', score: 268, rank: 'Mentor', },
-    { position: 9, email: 'some@email.com', score: 199, rank: 'Mentor', },
-    { position: 10, email: 'some@email.com', score: 100, rank: 'Mentor', }
-    ];
+  public answerOpen = false;
+  public interval: any;
+  public userEmail = '';
+  public urlParamsNews = '';
+  public newsBlock: any[] = [];
+  public newsText = '';
 
   constructor(
     public authservice: AuthService,
-    public messageService: MessageService
+    public messageService: MessageService,
+    public questionanswer: QuestionAnswerService,
+    public chatComponent: ChatComponentComponent,
+    public api: ApiService
   ) { }
 
   public ngOnInit() {
-    this.messageService.loadChat();
-    setInterval(function() {
-      this.messageService.loadChat();
-    }, 300000);
-    this.messageService.newsBlockfunc();
+    this.newsBlockFunc();
   }
+
+  public ngOnDestroy(){
+    if (this.interval) {
+      clearInterval(this.interval);
+    }
+  }
+
+  /**
+   * Showing/hiding news input tag
+   */
   public openInput() {
     this.newsInputOpen = !this.newsInputOpen;
   }
-  public getCurrentUser() {
-    // Retrieve data by key from local storage
-    const userString: string = localStorage.getItem('currentUser');
-    // Return user object if data in local storage exist, or empty object if no user data available
-    return typeof userString === 'string' ? JSON.parse(userString) : {};
-  }
+
   public quit() {
     this.authservice.logOutFunk();
   }
-  public sendChatMessage() {
-    if (this.messageService.chat.message) {
-      this.messageService.sendMessage(this.messageService.chat.message);
+
+  public sendNewsFunc() {
+    if (this.newsText) {
+      this.sendNews(this.newsText);
     }
   }
-  public sendNewsFunc() {
-    if (this.messageService.chat.newsMessage) {
-      this.messageService.sendNews(this.messageService.chat.newsMessage);
+
+  public answerOpenFunc(){
+    this.answerOpen = true;
+  }
+
+  /**
+   * Create question and send to backend
+   */
+  public sendMessage() {
+    this.question = {
+      title: this.title,
+      description: this.description
+    };
+    console.log('send clicked');
+    if( this.question.title == '' || this.question.description == '') {
+      return console.log('something wrong', 'question.title', this.question.title, 'question.description', this.question.description )
+    } else {
+      this.questionanswer.createNewQuestion(this.question);
+      this.answerOpen = false;
     }
+  }
+
+  public reject() {
+    console.log('reject clicked');
+    this.answerOpen = false;
+  }
+
+  /**
+   * load last news
+   */
+  public newsBlockFunc() {
+    this.urlParamsNews = `?page=1&limit=2&order={"createdAt":-1}&where={"status":"[NEWS]"}`;
+    this.messageService.getMessage(this.urlParamsNews).subscribe(
+      (responseLoad: any) => {
+        console.log('responseLoad', responseLoad);
+        for (let i = 0; i < responseLoad.rows.length; i++) {
+          if ((responseLoad.rows[i].status === '[NEWS]')) {
+            const newsMessage = {
+              text: responseLoad.rows[i].text,
+              timestamp: responseLoad.rows[i].createdAt
+            };
+            this.newsBlock.push(newsMessage);
+          }
+        }
+      },
+      (err) => {
+        console.log (err);
+      }
+    );
+  }
+
+  /**
+   * send news to the server
+   * @param {string} text
+   */
+  public sendNews(text: string) {
+    const appUser: any = this.messageService.getUserData();
+    const newsMessage: any = {
+      text: this.newsText,
+      timestamp: new Date().toISOString()
+    };
+    console.log('this.newsText', newsMessage);
+    this.newsBlock.push(newsMessage);
+    // this.messageService.postNews(newsMessage.text, appUser.id, '[NEWS]' )
+    // this.api.post(`/message`, {text: newsMessage.text, userId: appUser.id, status: '[NEWS]' })
+    this.messageService.postNews(newsMessage.text, appUser.id, '[NEWS]' ).subscribe(
+      (resp) => {
+        console.log('resp', resp);
+        this.newsInputOpen = false;
+        this.newsBlockFunc();
+      },
+      (err) => {
+        console.log('err', err)
+      }
+    );
+    this.newsBlock = [];
+    this.newsText = '';
   }
 }

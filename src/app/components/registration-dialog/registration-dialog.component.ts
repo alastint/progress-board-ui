@@ -1,7 +1,6 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import {UserService} from '../../../services/userservice';
-import {AuthService} from '../../../services/authservice';
+import { Router } from '@angular/router';
+import { UserService } from '../../../services/userservice';
 
 @Component({
   selector: 'app-registration-dialog',
@@ -27,7 +26,6 @@ export class RegistrationDialogComponent implements OnInit {
   constructor(
     public router: Router,
     public _user: UserService,
-    public authservice: AuthService
   ) { }
 
   public ngOnInit() {

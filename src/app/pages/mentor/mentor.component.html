@@ -1,0 +1,19 @@
+<div class="mentor-dashboard">
+    <table>
+      <thead>
+      <tr>
+        <th class="question-author">Author</th>
+        <th class="question">Question</th>
+        <th class="status">Status</th>
+        <th class="question-answer">Give Answer</th>
+      </tr>
+      </thead>
+      <tr *ngFor=" let question of questionBoard">
+        <td class="question-author">{{ question.author }}</td>
+        <td class="question">{{ question.title }}</td>
+        <td class="status">{{ question.status }}</td>
+        <td class="question-answer" (click)="goToDetails(question.questionId)"><a>Open</a></td>
+      </tr>
+    </table>
+  <button>Archived questions</button>
+</div>

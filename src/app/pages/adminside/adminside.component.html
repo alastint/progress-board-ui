@@ -1,3 +1,61 @@
-<p>
-  adminside works!
-</p>
+<div class="admin-page-container">
+  <!--Header Block-->
+  <header>
+    <!--Admin logo-->
+    <div class="logo-header">
+      <a href="">Super Admin</a>
+    </div>
+    <!--End of Admin logo div-->
+
+    <!--Header buttons)-->
+    <div class="head-btns-container">
+      <div class="head-btns">
+        <a href="#" class="showed-header-btns"><span><i class="fas fa-envelope"></i></span></a>
+        <a href="#" class="showed-header-btns"><span><i class="fas fa-bell"></i></span></a>
+        <a href="#" class="showed-header-btns"><span><i class="fas fa-flag"></i></span></a>
+        <div class="showed-header-btns">
+          <button class="dropbtn"><i class="fas fa-cogs"></i></button>
+          <div class="dropdown-content">
+            <a href="#">Link 1</a>
+            <a href="#">Link 2</a>
+            <a>Log Out</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Header buttons)-->
+  </header>
+  <!--End of Header-->
+
+  <!--Aside with navigation Sidebar-->
+  <aside class="sidebar">
+
+    <div class="user-panel">
+      <img src="http://cactusthemes.com/blog/wp-content/uploads/2018/01/tt_avatar_small.jpg" class="avatar-img">
+      <span>
+        <i>Jack Sparrow</i>
+        <a href="#">
+          <i class="fa fa-circle text-success"></i>
+          <a class="text-a">Online</a>
+        </a>
+      </span>
+    </div>
+    <!--Search form(Not working yet)-->
+    <form>
+      <div class="search-block">
+        <div class="search-input">
+          <input type="text" placeholder="Search">
+          <span><button type="submit" class="btn btn-flat"><span><i class="fa fa-search"></i></span></button></span>
+        </div>
+      </div>
+    </form>
+    <!--End of Search form-->
+  </aside>
+  <!--End of nav SideBar-->
+
+  <!--Content-->
+  <div class="content-block">
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

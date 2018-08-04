@@ -10,6 +10,7 @@ export class ApiService implements OnInit {
 
   // API endpoint url and details. Should be adjusted for new projects.
   protected apiUrl = 'https://progress-board-server.herokuapp.com/api/';
+  // protected apiUrl = 'http://192.168.0.103:5000/api/';
   protected prefix = 'v1';
   protected endpoint: string = this.apiUrl + this.prefix;
 

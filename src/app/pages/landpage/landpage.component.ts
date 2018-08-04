@@ -15,7 +15,11 @@ export class LandpageComponent {
     private router: Router,
     private authservice: AuthService,
   ) {}
-  // Calling authorisation function from AuthService
+
+  /**
+   * Calling authorisation function from AuthService
+   * @param user
+   */
   public auth(user) {
     this.authservice.authenticate(user).subscribe(
       (userdata: any) => {
