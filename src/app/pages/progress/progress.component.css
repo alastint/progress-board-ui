@@ -1,0 +1,64 @@
+ul, li{
+  padding-left: 0;
+}
+li{
+  list-style: none;
+}
+h4{
+  margin-bottom: 3px;
+}
+.skill-logo{
+  text-align: center;
+}
+.progress {
+  background: -moz-linear-gradient(top, #333, #999); /* Fx 3.6+ */
+  background: -webkit-linear-gradient(top, #333, #999); /* Chrome 10+,Safari 5.1+ */
+  background: -o-linear-gradient(top, #333,#999); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #333, #999); /* IE10+ */
+  background: linear-gradient(to bottom, #333, #999); /* W3C */
+  border: 1px solid #333;
+  height: 20px;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+.progress::before{
+  content: '';
+  position: absolute;
+  height: 18px;
+  background: #5bc1fe;
+  background: -moz-linear-gradient(top, #5bc1fe, #018ef2 50%, #57befd); /* Fx 3.6+ */
+  background: -webkit-linear-gradient(top, #5bc1fe, #018ef2 50%, #57befd); /* Chrome 10+,Safari 5.1+ */
+  background: -o-linear-gradient(top, #5bc1fe,#018ef2 50%,#57befd); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #5bc1fe, #018ef2 50%, #57befd); /* IE10+ */
+  background: linear-gradient(to bottom, #5bc1fe,#018ef2 50%, #57befd); /* W3C */
+  border: 1px solid #008DF2; /* Рамка */
+  box-shadow: 3px 0 3px rgba(0,0,0,0.5);
+}
+#html-line::before{
+  width: 50%;
+}
+#js-line::before{
+  width: 45%;
+}
+#angular-line::before{
+  width: 47%;
+}
+#bootstrap-line::before{
+  width: 15%;
+}
+.skills-container{
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  width: 500px;
+  background: rgba( 255,255,255,.3);
+  padding: 10px 20px 10px 20px;
+  border-radius: 7px;
+  color: white;
+  margin: 50px auto;
+}
+span{
+  position: absolute;
+  left: calc(50% - 0.8em);
+  z-index: 1;
+  color: white;
+}

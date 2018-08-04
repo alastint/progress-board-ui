@@ -16,10 +16,10 @@ a:hover, button:hover{
   cursor: pointer;
 }
 .background{
-  background: url("http://i.piccy.info/i9/73a11ee011254f699c2c5059da1944ac/1532451061/693337/1259664/background_2011768_1920.jpg");
+  background: url("http://i.piccy.info/i9/73a11ee011254f699c2c5059da1944ac/1532451061/693337/1259664/background_2011768_1920.jpg")  no-repeat;
   height: 100%;
   background-size: 100%;
-  max-width: 2500px;
+  max-width: 2000px;
   margin: 0 auto;
 }
 .absolute-support{

@@ -38,7 +38,7 @@
                 </li>
                 <li>
                   <span class="title-list">Company:</span>
-                  <span class="value-list">{{ user.company || 'none' }}</span>
+                  <span class="value-list">{{ user.companyName || 'none' }}</span>
                 </li>
                 <li>
                   <span class="title-list">Gender:</span>
@@ -53,28 +53,28 @@
     <!--End Home Portfolio-->
 
     <!--Edit Portfolio-->
-    <section id="settings-portfolio" [ngClass]="{'portfolio-active': this.visibility == false}">
+    <section id="settings-portfolio" class="settings-portfolio" [ngClass]="{'portfolio-active': this.visibility == false}">
       <ul>
         <li><h3>First Name</h3>
           <input type="text" name="firstName" placeholder="First Name ..." [(ngModel)]="user.firstName"
-                 (keyup)="onChange()">
+                 (keyup)="onChangedata()">
         </li>
 
         <li>
           <h3>Last Name</h3>
-          <input type="text" name="lastName" placeholder="Last Name..." [(ngModel)]="user.lastName" (keyup)="onChange()">
+          <input type="text" name="lastName" placeholder="Last Name..." [(ngModel)]="user.lastName" (keyup)="onChangedata()">
         </li>
       </ul>
       <ul>
         <li>
           <h3>Phone number</h3>
           <input type="text" name="lastName" [(ngModel)]="user.phoneNumber1" placeholder="Primary Phome Number..."
-                 (keyup)="onChange()">
+                 (keyup)="onChangedata()">
         </li>
         <li>
           <h3>Reserve phone number</h3>
           <input type="text" name="phoneNumber2" [(ngModel)]="user.phoneNumber2" placeholder="Reserve Phone Number..."
-                 (keyup)="onChange()">
+                 (keyup)="onChangedata()">
         </li>
       </ul>
 
@@ -82,18 +82,18 @@
         <li>
           <h3>Company</h3>
           <input type="text" name="companyName" [(ngModel)]="user.companyName" placeholder="Country..."
-                 (keyup)="onChange()">
+                 (keyup)="onChangedata()">
         </li>
         <li>
           <h3>Gender</h3>
-          <input type="text" name="gender" [(ngModel)]="user.gender" placeholder=" Gender..." (keyup)="onChange()">
+          <input type="text" name="gender" [(ngModel)]="user.gender" placeholder=" Gender..." (keyup)="onChangedata()">
         </li>
       </ul>
 
       <ul>
         <li>
           <h3>Country</h3>
-          <input type="text" name="lastName" [(ngModel)]="user.country" placeholder="Country..." (keyup)="onChange()">
+          <input type="text" name="lastName" [(ngModel)]="user.country" placeholder="Country..." (keyup)="onChangedata()">
         </li>
         <button id="backMenu" (click)="toggle()">Back</button>
         <button *ngIf="options.changed" id="saveChanges" (click)="trySaveProfile(user)">Update</button>

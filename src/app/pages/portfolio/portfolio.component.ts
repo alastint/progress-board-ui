@@ -17,7 +17,6 @@ export class PortfolioComponent implements OnInit {
     email: '',
     phoneNumber1: '',
     phoneNumber2: '',
-    company: '',
     gender: '',
     companyName: '',
     id: ''
@@ -36,7 +35,14 @@ export class PortfolioComponent implements OnInit {
     this.loadData()
   }
   public loadData() {
-    this.user = this.userService.getUserData();
+    const userId = this.userService.getUserData().id;
+    this.userService.getUserById((userId)).subscribe(
+      (resp: any) => {
+        this.user = resp.data;
+        console.log('response loadData', resp)
+    }
+    );
+    this.userUnchanged = this.userService.getUserData();
     console.log('this.user data', this.user)
   }
 
@@ -49,12 +55,11 @@ export class PortfolioComponent implements OnInit {
    * @param user
    */
   public trySaveProfile(user: any) {
-    console.log('user', user);
     if (user && user.id) {
       const changedUserData: any = this.getChanged(this.userUnchanged, this.user);
       this.userService.updateUser(changedUserData, user.id).subscribe(
         (resp: any) => {
-          console.log('resp', resp);
+          console.log('rest Try Save', resp);
           this.visibility = true;
         },
         (err: any) => {
@@ -67,7 +72,7 @@ export class PortfolioComponent implements OnInit {
   /**
    * Function what create array with difference of unchanged data and changed
    */
-  public onChange() {
+  public onChangedata() {
     this.options.changed = !this.areEqual(this.user, this.userUnchanged);
     const changedObj: any = this.getChanged(this.userUnchanged, this.user);
     console.log('changedObj', changedObj);
@@ -88,14 +93,11 @@ export class PortfolioComponent implements OnInit {
         }
       }
     }
+    console.log('diff', diff);
     return diff;
   }
 
   private areEqual(a: any, b: any) {
     return JSON.stringify(a) === JSON.stringify(b);
-  }
-
-  private clone(sourceObj: any) {
-    return JSON.parse(JSON.stringify(sourceObj));
   }
 }
