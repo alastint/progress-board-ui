@@ -1,0 +1,104 @@
+<div class="portfolio-container">
+  <div class="subpages">
+    <!--Home Portfolio-->
+    <section [ngClass]="{'portfolio-active': this.visibility === true}">
+      <div class="home-portfolio">
+        <div class="home-portfolio-header">
+          <div class="col-sm-4 col-md-4 col-lg-4">
+            <img class="avatar" src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260">
+          </div>
+          <div class="col-sm-8 col-md-8 col-lg-8">
+            <div class="title-block">
+              <h3>{{ user.fullname }}</h3>
+            </div>
+            <div class="absolute-edit-btn">
+              <a (click)="toggle()"><i class="fas fa-cog"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="page-content">
+          <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+              <ul>
+                <li>
+                  <span class="title-list">Country:</span>
+                  <span class="value-list">{{ user.country || 'none' }}</span>
+                </li>
+                <li>
+                  <span class="title-list">Email:</span>
+                  <span class="value-list">{{ user.email }}</span>
+                </li>
+                <li>
+                  <span class="title-list">Phone Number:</span>
+                  <span class="value-list">{{ user.phoneNumber1 || 'none' }}</span>
+                </li>
+                <li>
+                  <span class="title-list">Phone Number2:</span>
+                  <span class="value-list">{{ user.phoneNumber2 || 'none' }}</span>
+                </li>
+                <li>
+                  <span class="title-list">Company:</span>
+                  <span class="value-list">{{ user.companyName || 'none' }}</span>
+                </li>
+                <li>
+                  <span class="title-list">Gender:</span>
+                  <span class="value-list">{{ user.gender }}</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--End Home Portfolio-->
+
+    <!--Edit Portfolio-->
+    <section id="settings-portfolio" class="settings-portfolio" [ngClass]="{'portfolio-active': this.visibility == false}">
+      <ul>
+        <li><h3>First Name</h3>
+          <input type="text" name="firstName" placeholder="First Name ..." [(ngModel)]="user.firstName"
+                 (keyup)="onChangedata()">
+        </li>
+
+        <li>
+          <h3>Last Name</h3>
+          <input type="text" name="lastName" placeholder="Last Name..." [(ngModel)]="user.lastName" (keyup)="onChangedata()">
+        </li>
+      </ul>
+      <ul>
+        <li>
+          <h3>Phone number</h3>
+          <input type="text" name="lastName" [(ngModel)]="user.phoneNumber1" placeholder="Primary Phome Number..."
+                 (keyup)="onChangedata()">
+        </li>
+        <li>
+          <h3>Reserve phone number</h3>
+          <input type="text" name="phoneNumber2" [(ngModel)]="user.phoneNumber2" placeholder="Reserve Phone Number..."
+                 (keyup)="onChangedata()">
+        </li>
+      </ul>
+
+      <ul>
+        <li>
+          <h3>Company</h3>
+          <input type="text" name="companyName" [(ngModel)]="user.companyName" placeholder="Country..."
+                 (keyup)="onChangedata()">
+        </li>
+        <li>
+          <h3>Gender</h3>
+          <input type="text" name="gender" [(ngModel)]="user.gender" placeholder=" Gender..." (keyup)="onChangedata()">
+        </li>
+      </ul>
+
+      <ul>
+        <li>
+          <h3>Country</h3>
+          <input type="text" name="lastName" [(ngModel)]="user.country" placeholder="Country..." (keyup)="onChangedata()">
+        </li>
+        <button id="backMenu" (click)="toggle()">Back</button>
+        <button *ngIf="options.changed" id="saveChanges" (click)="trySaveProfile(user)">Update</button>
+      </ul>
+    </section>
+    <!--End Edit Portfolio-->
+  </div>
+</div>

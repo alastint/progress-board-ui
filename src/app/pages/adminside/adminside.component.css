@@ -1,0 +1,218 @@
+*{
+  color: white;
+  text-decoration: none;
+}
+
+ul{
+  padding: 0;
+}
+li{
+  list-style: none;
+}
+a, span{
+  font-family: 'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;
+}
+a:hover, button:hover{
+  cursor: pointer;
+}
+.admin-page-container{
+  background: url(http://littleprofessors.co.za/wp-content/uploads/2016/11/Kids-club-background-09.jpg);
+  background-size: 100%;
+  height: 100%;
+}
+/********************************************************
+                      Header
+*********************************************************/
+header{
+  width: 100%;
+  height: 50px;
+  background: rgba(70, 130, 180, 0.6);
+  display: block;
+}
+
+header nav{
+  float: right;
+}
+img{
+  vertical-align: middle;
+}
+.logo-header{
+  padding: 10px 25px 10px 15px;
+  width: 190px;
+  text-align: center;
+  font-size: 145%;
+  font-weight: bold;
+  background: rgba(54, 127, 169, .4);
+  float: left;
+}
+.logo-header a{
+  color: white;
+  text-decoration: none;
+}
+
+.head-btns{
+  display: inline-flex;
+  height: 50px;
+}
+.head-btns-container{
+  float: right;
+}
+.head-btns span{
+  margin-left: 7px;
+  margin-right: 7px;
+}
+.showed-header-btns{
+  padding: 15px 10px 15px 10px;
+}
+.avatar-header-img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}
+#img-btn{
+  padding-top: 5px;
+}
+/********************************************************
+                      Aside
+*********************************************************/
+aside, body, html{
+  height: 100%;
+}
+.sidebar{
+  background: rgba(34, 45, 50, .8);
+  height: calc(100% - 50px);
+  width: 230px;
+  overflow: hidden;
+  font-size: 14px;
+  float: left;
+}
+.user-panel{
+  padding: 15px;
+  display: flex;
+}
+.head-li{
+  color: #4b646f;
+  background: #1a2226;
+  width: auto;
+  padding: 10px 25px 10px 15px;
+  font-size: 12px;
+}
+.avatar-img{
+  width: 50px;
+  height: 50px;
+  border-radius: 80px;
+}
+.sidebar span{
+  padding-top: 8px;
+  padding-left: 10px;
+  display: grid;
+}
+.sidebar span a{
+  font-size: 80%;
+  padding-top: 4px;
+  text-decoration: none;
+}
+.sidebar span a, .sidebar span i{
+  color: white;
+}
+.text-a{
+  padding-left: 3px;
+  font-size: 12px;
+}
+.user-panel span a i {
+  font-size: 7px;
+  color: lawngreen;
+}
+.search-input{
+  display: flex;
+  margin-left: 15px;
+  margin-right: 15px;
+  background: #374850;
+  border-radius: 4px;
+}
+.search-input span{
+  padding: 0;
+}
+.search-input button{
+  border: none;
+  height: 30px;
+  width: 30px;
+  border-bottom-right-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.search-input input{
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
+  border: none;
+  padding-left: 10px;
+  width: 90%;
+}
+.search-input button, .search-input input{
+  background-color: #374850;
+}
+.sidebar-nav-ul{
+  margin-top: 10px;
+}
+.sidebar-nav-ul li{
+}
+.showed{
+  background: #1e282c;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.showed span{
+  display: inline-flex;
+  width: 100%;
+}
+.showed span i {
+  padding-right: 8px;
+}
+.sidebar-nav-ul > li > ul > li{
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 40px;
+}
+
+.menu-children-container {
+  padding: 0;
+  transition: height .3s ease;
+  height: 0;
+  overflow: hidden;
+}
+
+.content-block {
+  color: initial;
+  padding: 0 0 0 230px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 3px 4px 5px rgba(0,0,0,0.3);
+  border-radius: 3px;
+  z-index: 1;
+  right: 0;
+}
+.menu-header-btn:hover .menu-header-btn{
+  background-color: #3e8e41;
+}
+.dropdown-content a:hover{
+  background-color: #ddd;
+}
+.dropdown-content a{
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropbtn{
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  position: relative;
+}
+.showed-header-btns:hover .dropdown-content {
+  display: block;
+}

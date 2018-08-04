@@ -1,0 +1,60 @@
+<div class="dash-container">
+  <!--Table with list from backend-->
+  <div class="table-box">
+    <div class="search-userlist">
+      <select id="search-type-select" (change)=searchUserTag($event.target.value) >
+        <option *ngFor="let searchItem of tableOptions.searchItems" [value]="searchItem.value">by {{searchItem.title}}</option>
+      </select>
+      <input type="text" placeholder="Search..." (keyup)="searchUserBy($event.target.value)">
+    </div>
+    <h4 *ngIf="!usersList || !usersList.length">No results to show</h4>
+    <table *ngIf="usersList && usersList.length">
+      <thead>
+      <tr>
+        <th><input type="checkbox" (click)="check()" [checked]="tableOptions.checkedAll"></th>
+        <th
+          *ngFor="let headItem of tableOptions.headerItems"
+          (click)="sortTable(headItem.value)"
+        >
+          {{headItem.title}}
+          <i
+            *ngIf="tableOptions.sortKey === headItem.value"
+            class="fas fa-arrow-up"
+            [ngClass]="{'angle-180':tableOptions.sortDirection === 1}"
+          ></i>
+        </th>
+        <th>Rank</th>
+        <th>Edit</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of usersList">
+        <td class="checkbox"><input type="checkbox" [checked]="item.checked" class="checkbox" (click)="check(item)"/></td>
+        <td class="id-td">{{item.id}}</td>
+        <td class="name-collumn">{{item.firstName}}</td>
+        <td class="email-column">{{item.email}}</td>
+        <td class="company-column">{{item.companyName}}</td>
+        <td class="created-id">{{item.createdAt}}</td>
+        <td class="created-id">{{item.role}}</td>
+        <td class="edit"><button class="editCl" (click)="goToDetails(this.item.id)">
+          <i class="fa fa-edit"></i></button></td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="pagination">
+      <select (change)= chooseShowed($event.target.value)>
+        <option *ngFor="let onPage of tableOptions.paginationItemsSelector" [value]="onPage" [selected]="onPage === tableOptions.tableItemsAmount">{{onPage}}</option>
+      </select>
+      <button (click)="paginate('first')"><<</button>
+      <button (click)="paginate(-1)"><</button>
+      <span> {{tableOptions.activePage}} of {{tableOptions.pages}} pages </span>
+      <button (click)="paginate(1)">></button>
+      <button (click)="paginate('last')">>></button>
+    </div>
+    <button id="createU" (click)="createUser()">Create User</button>
+    <button id="delU">Delete Marked Users</button>
+  </div>
+  <!--End of Table with list from backend-->
+</div>
+
+

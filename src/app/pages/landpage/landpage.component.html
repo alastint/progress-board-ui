@@ -13,12 +13,14 @@
     <img src="https://static.nfl.com/static/content/public/static/wildcat/assets/img/logos/teams/DEN.svg">
     <h3>Sign in</h3>
     <div class="login">
-      <p>Email</p>
-      <input type="email" [(ngModel)]="user.email"  placeholder="Email" name="email">
-      <p>Password</p>
-      <input type="password" [(ngModel)]="user.password" placeholder="Password" name="password">
-      <button type="submit" id="loginBtn" (click)="auth(user)">Log In</button>
-      <button type="button" id="registBtn" (click)="showRegist = true">Register</button>
+      <form (ngSubmit)="auth(user)">
+        <p>Email</p>
+        <input type="email" [(ngModel)]="user.email"  placeholder="Email" name="email">
+        <p>Password</p>
+        <input type="password" [(ngModel)]="user.password" name="password" placeholder="Password" name="password">
+        <button type="submit" id="loginBtn" name="LoginButton" >Log In</button>
+        <button type="button" id="registBtn" (click)="showRegist = true">Register</button>
+      </form>
     </div>
   </div>
 </div>

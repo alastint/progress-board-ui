@@ -1,0 +1,12 @@
+<div class="dialog-answer-overlay" (click)="do('reject')" [ngClass]="{'dialog-answer-overlay-active':answerOpen}"></div>
+<div class="dialog-answer-container" [ngClass]="{'dialog-answer-container-active':answerOpen}">
+  <div class="dialog-answer-message">
+    <form (onSubmit)="do('confirm')">
+      <input type="text" placeholder="Title of question" name="TitleQuestion" [(ngModel)]="this.HomepageComponent.title">
+      <textarea id="" cols="60" rows="10" placeholder="Details..." name="TextQuestion" [(ngModel)]="this.HomepageComponent.description"></textarea>
+      <button type="button" name="cancel" (click)="do('reject')">Cancel</button>
+      <button type="submit" name="submit">Send</button>
+    </form>
+  </div>
+</div>
+

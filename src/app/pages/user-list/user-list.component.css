@@ -1,0 +1,121 @@
+.dash-container{
+  padding: 10px;
+}
+.table-box{
+  border: 3px solid lightgrey;
+  display: inline-block;
+  border-radius: 7px;
+  font-size: 90%;
+  background: white;
+  width: 830px;
+}
+table{
+  margin: 10px;
+  border: 1px solid grey;
+  border-collapse: collapse;
+}
+thead{
+  padding: 0;
+}
+tr {
+  border: 1px solid black ;
+  text-align: center;
+  padding: 2px;
+}
+th{
+  border: 1px solid black ;
+  text-align: center;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+tr td{
+  border: 1px solid lightgrey;
+  padding: 3px 3px 3px 12px;
+}
+.checkbox, .edit, .delete-column{
+  padding: 3px !important;
+}
+.id-td{
+  padding: 0 3px 0 3px !important;
+  text-align: center;
+}
+.created-id{
+  width: 165px;
+}
+.name-collumn{
+  min-width: 115px;
+}
+.email-column{
+  min-width: 115px;;
+}
+.company-column{
+  min-width: 100px;
+}
+tr td button{
+  height: 24px;
+  width: 23px;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  padding: 4px;
+  font-size: 17px;
+}
+#createU, #delU, #mU{
+  margin: 0 0 10px  10px ;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  height: 25px;
+  padding: 0 4px 0 4px;
+}
+#createU{
+  background: cornflowerblue;
+}
+#delU, .deleteCl{
+  background: red;
+}
+.editCl{
+  background: #428bca;
+}
+/******pagination******/
+.pagination{
+  float: right;
+  height: 20px;
+  margin-top: 5px;
+  margin-right: 20px;
+}
+.pagination input{
+  width: 20px;
+  height: 10px;
+}
+.pagination button{
+  padding: 0 3px 0 3px;
+  border: none;
+  margin-left: 3px;
+  margin-right: 3px;
+  background: none;
+  background: white;
+}
+
+/*st*/
+.search-userlist{
+  float: left;
+  margin: 5px 10px 5px 10px;
+}
+.search-userlist * {
+  border: 1px solid gray;
+}
+.search-userlist input {
+  padding-left: 4px;
+}
+
+/**/
+th i.fas{
+  font-size: 70%;
+  /*display: none;*/
+  transition: all .3s ease;
+}
+/*th:active i {*/
+/*display: inline;*/
+/*}*/

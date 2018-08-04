@@ -1,0 +1,25 @@
+<div class="question-page-container">
+  <div class="ask-container">
+    <i>{{ options.author }} </i>
+    <i> {{ options.date }}</i>
+    <h3>{{ options.title }}</h3>
+    <p>{{ options.description }}</p>
+  </div>
+  <div class="answers" #answersContainer>
+    <ul>
+      <li *ngFor="let answer of options.answers" class="answers-list">
+        <i>{{ answer.createdAt }}</i>
+        <p>{{ answer.title }}</p>
+        <p>{{ answer.description }}</p>
+      </li>
+    </ul>
+  </div>
+  <div class="ask-answer">
+    <form (ngSubmit)="sendAnswer()">
+      <input type="text" id="answerTitle" name="Title" [(ngModel)]="questionService.newAnswer.title" placeholder="Message Title...">
+      <textarea cols="140" rows="5" id="answerText" name="Text" [(ngModel)]="questionService.newAnswer.description" placeholder="Message...">
+    </textarea>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</div>
