@@ -1,6 +1,5 @@
 import {AfterViewChecked, Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {MessageService} from "../../../services/messageservice";
-import {ApiService} from "../../../services/api";
 
 @Component({
   selector: 'app-chat-component',
@@ -18,7 +17,6 @@ export class ChatComponentComponent implements  OnInit, AfterViewChecked{
 
   constructor(
     public messageService: MessageService,
-    public api: ApiService
   ) { }
 
   ngOnInit(){
@@ -40,24 +38,28 @@ export class ChatComponentComponent implements  OnInit, AfterViewChecked{
     this.messageService.getMessage(this.urlParams).subscribe(
       (responseLoad: any) => {
         console.log('responseLoad', responseLoad);
-        for (let i = responseLoad.rows.length - 1; i >= 0; i--) {
-          if (!(responseLoad.rows[i].status == '[NEWS]')) {
-            console.log('appUser.id === responseLoad.rows[i].userId', appUser.id === responseLoad.rows[i].userId);
-            const historyMessage = {
-              author: (appUser.id === responseLoad.rows[i].userId) ? 'Me ' : 'Interlocutor ',
-              text: responseLoad.rows[i].text,
-              timestamp: responseLoad.rows[i].createdAt
-            };
-            this.chatMessages.push(historyMessage);
-            console.log('historyMessage', historyMessage, 'this.chatMessages', this.chatMessages);
-          }
-        }
-        this.scrollChat();
+        this.fetchResponseToMessages(responseLoad, appUser)
       },
       (err) => {
         console.log (err);
       }
     );
+  }
+
+  public fetchResponseToMessages(responseLoad, appUser){
+    for (let i = responseLoad.rows.length - 1; i >= 0; i--) {
+      if (!(responseLoad.rows[i].status == '[NEWS]')) {
+        console.log('appUser.id === responseLoad.rows[i].userId', appUser.id === responseLoad.rows[i].userId);
+        const historyMessage = {
+          author: (appUser.id === responseLoad.rows[i].userId) ? 'Me ' : 'Interlocutor ',
+          text: responseLoad.rows[i].text,
+          timestamp: responseLoad.rows[i].createdAt
+        };
+        this.chatMessages.push(historyMessage);
+        console.log('historyMessage', historyMessage, 'this.chatMessages', this.chatMessages);
+      }
+    }
+    this.scrollChat();
   }
 
   /**
@@ -82,10 +84,10 @@ export class ChatComponentComponent implements  OnInit, AfterViewChecked{
       timestamp: new Date().toISOString()
     };
     console.log('appUser.id',message.text, appUser.id);
-    this.chatMessages.push(message);
     this.messageService.postMessage(message.text, appUser.id).subscribe(
       (resp: any) => {
         console.log('resp', resp);
+        this.loadChat()
       },
       (err) => {
         console.log (err);

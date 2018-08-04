@@ -19,14 +19,7 @@ export class QuestionAnswerService {
    * @returns {Subscription}
    */
   public createNewQuestion(question: any) {
-    return this.api.post(`${this.questionAnswerPath}/ask`, {title: question.title, description: question.description}).subscribe(
-      (resp: any) => {
-        console.log('resp', resp);
-      },
-      (err) => {
-        console.log (err);
-      }
-    );
+    return this.api.post(`${this.questionAnswerPath}/ask`, {title: question.title, description: question.description})
   }
 
   /**

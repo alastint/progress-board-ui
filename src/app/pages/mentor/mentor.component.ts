@@ -20,32 +20,38 @@ export class MentorComponent implements OnInit {
   }
 
   /**
-   * load list of questionss with status "Enabled" to question board
+   * load list of questionss with status "Enabled" from backend, and try calling questionResponce function
    */
   public questionFunc() {
     this.urlParams = `?page=1&limit=8&order={"createdAt":-1}&where={"status":"enabled"}`;
     this.questionAnswerService.getQAResponce(this.urlParams).subscribe(
       (resp: any) => {
-        console.log('resp 2', resp);
-        for (let i = 0; i < resp.rows.length; i++) {
-          if ((resp.rows[i].status === 'enabled')) {
-            const questionLine = {
-              author: 'someIdiot',
-              title: resp.rows[i].title,
-              timestamp: resp.rows[i].createdAt,
-              id: i,
-              status: resp.rows[i].status,
-              questionId: resp.rows[i].id
-            };
-            this.questionBoard.push(questionLine);
-          }
-        }
-        console.log(this.questionBoard)
+        this.questionResponse(resp)
       },
       (err) => {
         console.log (err);
       }
     );
+  }
+
+  /**
+   * load list of questionss with status "Enabled" to question board
+   * @param resp
+   */
+  public questionResponse(resp){
+    for (let i = 0; i < resp.rows.length; i++) {
+      if ((resp.rows[i].status === 'enabled')) {
+        const questionLine = {
+          author: 'someIdiot',
+          title: resp.rows[i].title,
+          timestamp: resp.rows[i].createdAt,
+          id: i,
+          status: resp.rows[i].status,
+          questionId: resp.rows[i].id
+        };
+        this.questionBoard.push(questionLine);
+      }
+    }
   }
 
   /**

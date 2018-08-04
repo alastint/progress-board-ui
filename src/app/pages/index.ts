@@ -1,0 +1,13 @@
+export { AdminsideComponent } from "./adminside/adminside.component";
+export { ConversationpageComponent } from "./conversationpage/conversationpage.component";
+export { DashboardComponent } from "./dashboard/dashboard.component";
+export { HomepageComponent } from "./homepage/homepage.component";
+export { LandpageComponent } from "./landpage/landpage.component";
+export { ManageuserComponent } from "./manageuser/manageuser.component";
+export { MentorComponent } from "./mentor/mentor.component";
+export { PortfolioComponent } from "./portfolio/portfolio.component";
+export { ProgressComponent } from "./progress/progress.component";
+export { QuestionDiscussComponent } from "./question-discuss/question-discuss.component";
+export { RecoveryComponent } from "./recovery/recovery.component";
+export { UnknownpageComponent } from "./unknownpage/unknownpage.component";
+export { UserListComponent } from "./user-list/user-list.component";

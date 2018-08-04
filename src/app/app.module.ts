@@ -1,34 +1,43 @@
+import { Angular2FontawesomeModule } from 'angular2-fontawesome';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { FormsModule } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { ApproutingModule } from './approuter.module';
-import { ApiService } from '../services/api';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { AuthService } from '../services/authservice/';
-import { FormsModule } from '@angular/forms';
-import { UserService } from '../services/userservice';
-import { UnknownpageComponent } from './pages/unknownpage/unknownpage.component';
-import { ManageuserComponent } from './pages/manageuser/manageuser.component';
-import {AuthAdminGuardService, AuthGuardService} from '../services/authguard';
-import { Angular2FontawesomeModule } from 'angular2-fontawesome';
-import { RecoveryComponent } from './pages/recovery/recovery.component';
-import { HomepageComponent } from './pages/homepage/homepage.component';
-import { LandpageComponent } from './pages/landpage/landpage.component';
-import { ProgressComponent } from './pages/progress/progress.component';
-import { AdminsideComponent } from './pages/adminside/adminside.component';
-import { ConfirmDialogComponent } from './components/';
-import { RegistrationDialogComponent } from './components';
-import { MessageService } from '../services/messageservice';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { MentorComponent } from './pages/mentor/mentor.component';
-import { QuestionanswerDialogComponent } from './components/questionanswer-dialog/';
-import { QuestionAnswerService } from '../services/question-answer';
-import { QuestionDiscussComponent } from './pages/question-discuss/question-discuss.component';
-import { ChatComponentComponent } from './components/chat-component/';
-import { ConversationpageComponent } from './pages/conversationpage/conversationpage.component';
-import { UserListComponent } from './pages/user-list/user-list.component';
-import { PortfolioComponent } from './pages/portfolio/portfolio.component';
+
+import {
+  ApiService,
+  AuthAdminGuardService,
+  AuthGuardService,
+  AuthService,
+  MessageService,
+  QuestionAnswerService,
+  UserService
+} from '../services';
+
+import {
+  ConfirmDialogComponent,
+  ChatComponentComponent,
+  RegistrationDialogComponent,
+  QuestionanswerDialogComponent
+} from './components';
+
+import {
+  UnknownpageComponent,
+  ManageuserComponent,
+  UserListComponent,
+  RecoveryComponent,
+  QuestionDiscussComponent,
+  ProgressComponent,
+  PortfolioComponent,
+  MentorComponent,
+  LandpageComponent,
+  HomepageComponent,
+  AdminsideComponent,
+  ConversationpageComponent,
+  DashboardComponent
+} from './pages';
 
 @NgModule({
   declarations: [

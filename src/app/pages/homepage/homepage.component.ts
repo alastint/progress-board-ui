@@ -1,8 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AuthService} from '../../../services/authservice';
-import {MessageService} from '../../../services/messageservice';
-import {QuestionAnswerService} from "../../../services/question-answer";
-import {ApiService} from "../../../services/api";
+import {AuthService, QuestionAnswerService, MessageService} from '../../../services/';
 
 @Component({
   selector: 'app-homepage',
@@ -26,7 +23,6 @@ export class HomepageComponent  implements OnInit, OnDestroy{
     public authservice: AuthService,
     public messageService: MessageService,
     public questionanswer: QuestionAnswerService,
-    public api: ApiService
   ) { }
 
   public ngOnInit() {
@@ -80,8 +76,15 @@ export class HomepageComponent  implements OnInit, OnDestroy{
     if( this.question.title == '' || this.question.description == '') {
       return console.log('something wrong', 'question.title', this.question.title, 'question.description', this.question.description )
     } else {
-      this.questionanswer.createNewQuestion(this.question);
-      this.answerOpen = false;
+      this.questionanswer.createNewQuestion(this.question).subscribe(
+        (resp: any) => {
+          console.log('resp', resp);
+          this.answerOpen = false;
+        },
+        (err) => {
+          console.log (err);
+        }
+      );
     }
   }
 

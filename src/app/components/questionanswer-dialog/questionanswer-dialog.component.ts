@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from "@angular/router";
-import {HomepageComponent} from "../../pages/homepage/homepage.component";
+import {HomepageComponent} from "../../pages/";
 
 @Component({
   selector: 'app-questionanswer-dialog',
@@ -10,13 +10,13 @@ import {HomepageComponent} from "../../pages/homepage/homepage.component";
 export class QuestionanswerDialogComponent implements OnInit {
   public user: any = {};
   public passwordConfirm = {};
+  public answerOpen = false;
   @Input() options: any = {
     answerOpen: false,
   };
   @Input() targetItem: any = {};
   @Output() doConfirm: any = new EventEmitter();
   @Output() doReject: any = new EventEmitter();
-  public answerOpen = false;
 
   constructor(
     public router: Router,
